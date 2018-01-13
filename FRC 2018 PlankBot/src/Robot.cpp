@@ -14,7 +14,6 @@
 
 #include "Commands/DriveMec.h"
 #include "Commands/DriveOcta.h"
-#include "Commands/AutoSwitchPlacement.h"
 
 class Robot : public frc::TimedRobot {
 public:

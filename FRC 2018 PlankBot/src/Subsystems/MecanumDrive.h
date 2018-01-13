@@ -3,7 +3,7 @@
 
 #include <Commands/Subsystem.h>
 
-class MecanumDrive : public Subsystem {
+class MecanumDrive : public frc::Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities

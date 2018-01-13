@@ -1,7 +1,7 @@
 #include "MecanumDrive.h"
 #include "../RobotMap.h"
 
-MecanumDrive::MecanumDrive() : Subsystem("ExampleSubsystem") {
+MecanumDrive::MecanumDrive() : frc::Subsystem("MecanumDrive") {
 
 }
 

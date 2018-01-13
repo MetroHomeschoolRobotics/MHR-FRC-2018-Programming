@@ -1,7 +1,7 @@
 #include "OctanumDrive.h"
 #include "../RobotMap.h"
 
-OctanumDrive::OctanumDrive() : Subsystem("ExampleSubsystem") {
+OctanumDrive::OctanumDrive() : frc::Subsystem("OctanumDrive") {
 
 }
 

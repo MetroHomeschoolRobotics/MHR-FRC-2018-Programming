@@ -7,6 +7,9 @@
 
 #pragma once
 
+#ifndef ROBOTMAP_H_
+#define ROBOTMAP_H_
+
 #include <ctre/Phoenix.h>
 
 /**
@@ -42,3 +45,5 @@ WPI_TalonSRX *frontLeftDriveMotor = new WPI_TalonSRX(kLeftFrontMotor);
 WPI_TalonSRX *rearLeftDriveMotor = new WPI_TalonSRX(kLeftRearMotor);
 WPI_TalonSRX *frontRightDriveMotor = new WPI_TalonSRX(kRightFrontMotor);
 WPI_TalonSRX *rearRightDriveMotor = new WPI_TalonSRX(kRightRearMotor);
+
+#endif

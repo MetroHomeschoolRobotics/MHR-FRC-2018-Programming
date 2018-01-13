@@ -1,7 +1,7 @@
 #include "TankDrive.h"
 #include "../RobotMap.h"
 
-TankDrive::TankDrive() : Subsystem("ExampleSubsystem") {
+TankDrive::TankDrive() : frc::Subsystem("TankDrive") {
 
 }
 
