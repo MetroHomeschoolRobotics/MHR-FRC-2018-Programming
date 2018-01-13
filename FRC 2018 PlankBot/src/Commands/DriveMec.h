@@ -1,9 +1,9 @@
 #ifndef DriveMec_H
 #define DriveMec_H
 
-#include "../CommandBase.h"
+#include <Commands/Command.h>
 
-class DriveMec : public CommandBase {
+class DriveMec : public frc::Command {
 public:
 	DriveMec();
 	void Initialize();

@@ -1,9 +1,9 @@
 #ifndef DriveOcta_H
 #define DriveOcta_H
 
-#include "../CommandBase.h"
+#include <Commands/Command.h>
 
-class DriveOcta : public CommandBase {
+class DriveOcta : public frc::Command {
 public:
 	DriveOcta();
 	void Initialize();

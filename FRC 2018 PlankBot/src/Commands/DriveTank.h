@@ -1,9 +1,9 @@
 #ifndef DriveTank_H
 #define DriveTank_H
 
-#include "../CommandBase.h"
+#include <Commands/Command.h>
 
-class DriveTank : public CommandBase {
+class DriveTank : public frc::Command {
 public:
 	DriveTank();
 	void Initialize();

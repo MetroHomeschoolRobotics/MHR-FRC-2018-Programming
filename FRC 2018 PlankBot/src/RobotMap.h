@@ -6,7 +6,8 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
-#include "ctre/Phoenix.h"
+
+#include <ctre/Phoenix.h>
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
