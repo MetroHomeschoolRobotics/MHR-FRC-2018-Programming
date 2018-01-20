@@ -26,7 +26,7 @@ OI::OI() {
     driveJoystick.reset(new frc::Joystick(0));
     
     switchDriveButton.reset(new frc::JoystickButton(driveJoystick.get(), 1));
-    switchDriveButton->WhileHeld(new SwitchDrive());
+    switchDriveButton->ToggleWhenPressed(new SwitchDrive());
     liftButton.reset(new frc::JoystickButton(driveJoystick.get(), 1));
     liftButton->WhileHeld(new Lift());
 

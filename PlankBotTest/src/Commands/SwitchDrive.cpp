@@ -27,12 +27,12 @@ void SwitchDrive::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SwitchDrive::Execute() {
-
+	Robot::octaDrive.get()->SwitchMode();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool SwitchDrive::IsFinished() {
-    return false;
+    return true;
 }
 
 // Called once after isFinished returns true
