@@ -30,13 +30,13 @@ void RobotMap::init() {
     tankDriveFrontLeft.reset(new WPI_TalonSRX(0));
     
     
-    tankDriveFrontRight.reset(new WPI_TalonSRX(1));
+    tankDriveFrontRight.reset(new WPI_TalonSRX(2));
     
     
-    tankDriveRearRight.reset(new WPI_TalonSRX(2));
+    tankDriveRearRight.reset(new WPI_TalonSRX(3));
     
     
-    tankDriveRearLeft.reset(new WPI_TalonSRX(3));
+    tankDriveRearLeft.reset(new WPI_TalonSRX(1));
     
     
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));

@@ -40,6 +40,13 @@ void OctoDrive::Periodic() {
 
 }
 
+void OctoDrive::Move(double x, double y, double z){
+	if (isTank){
+		Robot::tankDrive.get()->Move(x,y);
+	} else {
+		Robot::mechDrive.get()->Move(x,y,z);
+	}
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

@@ -44,6 +44,18 @@ void TankDrive::Periodic() {
 
 }
 
+void TankDrive::Move(double x, double y){
+	if(fabs(x) < threshold) {
+		x = 0;
+	}
+	if(fabs(y) < threshold) {
+		y = 0;
+	}
+	frontLeft->Set(-(y-x));
+	rearLeft->Set(-(y-x));
+	frontRight->Set(y+x);
+	rearRight->Set(y+x);
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
