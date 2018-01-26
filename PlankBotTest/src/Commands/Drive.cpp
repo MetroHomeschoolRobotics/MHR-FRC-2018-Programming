@@ -32,7 +32,7 @@ void Drive::Execute() {
 	Robot::octaDrive.get()->Move(
 			joy->GetRawAxis(0),
 			joy->GetRawAxis(1),
-			joy->GetRawAxis(2));
+			joy->GetRawAxis(2)-joy->GetRawAxis(3));
 
 }
 
