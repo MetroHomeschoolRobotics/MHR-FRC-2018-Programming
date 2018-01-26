@@ -27,7 +27,7 @@ OI::OI() {
     
     switchDriveButton.reset(new frc::JoystickButton(driveJoystick.get(), 1));
     switchDriveButton->ToggleWhenPressed(new SwitchDrive());
-    liftButton.reset(new frc::JoystickButton(driveJoystick.get(), 1));
+    liftButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
     liftButton->WhileHeld(new Lift());
 
     // SmartDashboard Buttons
