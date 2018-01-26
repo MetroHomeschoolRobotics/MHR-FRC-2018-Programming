@@ -52,9 +52,9 @@ void OctaDrive::Move(double x, double y, double z){
 void OctaDrive::SwitchMode(){
 	isTank = !isTank;
 	if (isTank){
-		RobotMap::octoDriveSwitchSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
-	} else {
 		RobotMap::octoDriveSwitchSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
+	} else {
+		RobotMap::octoDriveSwitchSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
 	}
 
 }
