@@ -54,10 +54,10 @@ void MechDrive::Move(double x, double y, double z){
 	if(fabs(z) < threshold) {
 		z = 0;
 	}
-	frontRight->Set(y+x+z);
 	frontLeft->Set(y-x+z);
-	rearRight->Set(y-x-z);
-	rearLeft->Set(y+x-z);
+	rearLeft->Set(y+x+z);
+	frontRight->Set(-y-x+z);
+	rearRight->Set(-y+x+z);
 
 	/*
 	frontLeft->Set(y+x+z);

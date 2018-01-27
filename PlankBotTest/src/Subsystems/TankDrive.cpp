@@ -51,10 +51,10 @@ void TankDrive::Move(double x, double y){
 	if(fabs(y) < threshold) {
 		y = 0;
 	}
-	frontLeft->Set((y+x));
-	rearLeft->Set((y+x));
-	frontRight->Set(-(y-x));
-	rearRight->Set(-(y-x));
+	frontLeft->Set((y-x));
+	rearLeft->Set((y-x));
+	frontRight->Set((-y-x));
+	rearRight->Set((-y-x));
 }
 
 // Put methods for controlling this subsystem

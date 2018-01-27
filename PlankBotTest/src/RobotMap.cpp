@@ -40,6 +40,7 @@ void RobotMap::init() {
     
     
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
+    octoDriveSwitchSol1->Set(frc::DoubleSolenoid::kReverse);
     lw->AddActuator("OctaDrive", "SwitchSol1", octoDriveSwitchSol1);
     
 
