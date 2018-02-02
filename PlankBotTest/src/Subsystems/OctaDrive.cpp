@@ -9,9 +9,6 @@ OctaDrive::OctaDrive() : frc::Subsystem("OctoDrive") {
 }
 
 void OctaDrive::InitDefaultCommand() {
-
-        SetDefaultCommand(new Drive());
-
 }
 
 void OctaDrive::Periodic() {

@@ -13,9 +13,6 @@ MechDrive::MechDrive() : frc::Subsystem("MechDrive") {
 }
 
 void MechDrive::InitDefaultCommand() {
-
-        SetDefaultCommand(new Drive());
-
 }
 
 void MechDrive::Periodic() {

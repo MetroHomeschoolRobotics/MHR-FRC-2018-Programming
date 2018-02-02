@@ -13,7 +13,7 @@ void Lift::Execute() {
 
 	Joystick *joy = Robot::oi.get()->getDriveJoystick().get();
 
-	Robot::boxLift.get()->Rotate(joy->GetRawAxis(4));
+	Robot::boxLift.get()->Rotate(joy->GetRawAxis(5));
 
 }
 

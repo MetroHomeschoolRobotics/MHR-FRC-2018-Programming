@@ -18,7 +18,7 @@ void BoxLift::Rotate(double r){
 			r = 0;
 	}
 
-	r = pow(r,3);
+	//r = pow(r,3);
 	liftMotor.get()->Set(r);
 }
 

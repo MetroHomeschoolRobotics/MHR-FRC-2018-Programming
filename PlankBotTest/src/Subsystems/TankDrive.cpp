@@ -13,9 +13,6 @@ TankDrive::TankDrive() : frc::Subsystem("TankDrive") {
 }
 
 void TankDrive::InitDefaultCommand() {
-
-        SetDefaultCommand(new Drive());
-
 }
 
 void TankDrive::Periodic() {
