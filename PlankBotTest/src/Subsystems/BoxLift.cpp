@@ -15,28 +15,39 @@ void BoxLift::InitDefaultCommand() {
 
 void BoxLift::Rotate(double r){
 
+	//Sets Threshold
 	if(fabs(r) < threshold) {
 			r = 0;
 	}
 
+	//Grabs Encoder Values as Integer "count"
 	int count = liftMotor.get()->GetSelectedSensorPosition(0);
 
-	//r = pow(r,3);
+	//Divides Speed by Two
 	r /= 2;
-	if (count > -480 && count < 2500) {
 
+	//Restricts Movement Between Encoder Values
+	if (count > -3500 && count < 0) {
+
+		//Sets Motor Speed
 		liftMotor.get()->Set(r);
 
-	} else if (count < -480 && r < 0) {
+	//Allows Up Movement Into Range
+	} else if (count < -3500 && r < 0) {
 
+		//Sets Motor Speed
 		liftMotor.get()->Set(r);
 
-	} else if (count > 2500 && r > 0) {
+	//Allows Down Movement Into Range
+	} else if (count >= -50 && r > 0) {
 
+		//Sets Motor Speed
 		liftMotor.get()->Set(r);
 
+	//Sets Speed to Zero If Outside Range
 	} else {
 
+		//Sets Motor Speed
 		liftMotor.get()->Set(0.0);
 
 	}
