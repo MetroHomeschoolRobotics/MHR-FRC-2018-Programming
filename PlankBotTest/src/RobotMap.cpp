@@ -28,6 +28,7 @@ void RobotMap::init() {
     liftMotor.reset(new frc::Spark(0));
     
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
+    octoDriveSwitchSol1->Set(frc::DoubleSolenoid::kReverse);
     lw->AddActuator("OctaDrive", "SwitchSol1", octoDriveSwitchSol1);
     octoDriveSwitchSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
     

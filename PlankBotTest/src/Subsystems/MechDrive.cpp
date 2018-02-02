@@ -39,5 +39,4 @@ void MechDrive::Move(double x, double y, double z){
 	rearLeft->Set(y+x+z);
 	frontRight->Set(-y-x+z);
 	rearRight->Set(-y+x+z);
-
 }
