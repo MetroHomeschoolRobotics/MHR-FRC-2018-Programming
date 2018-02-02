@@ -13,6 +13,8 @@ std::shared_ptr<WPI_TalonSRX> RobotMap::liftMotor;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::octoDriveSwitchSol1;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::liftGrabSol1;
 
+std::shared_ptr<frc::Encoder> RobotMap::liftMotorEncoder;
+
 void RobotMap::init() {
 
     frc::LiveWindow *lw = frc::LiveWindow::GetInstance();
@@ -35,5 +37,7 @@ void RobotMap::init() {
     liftGrabSol1.reset(new frc::DoubleSolenoid(0, 2, 3));
     lw->AddActuator("Lift", "SwitchSol2", liftGrabSol1);
     liftGrabSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
+
+    liftMotorEncoder.reset(new frc::Encoder(0, 1, false, Encoder::EncodingType::k4X));
 
 }

@@ -11,6 +11,7 @@ private:
 
 	std::shared_ptr<WPI_TalonSRX> liftMotor;
 	std::shared_ptr<frc::DoubleSolenoid> grabSol1;
+	std::shared_ptr<frc::Encoder> liftEncoder;
 
 	double threshold = 0.1;
 	bool isHold = false;

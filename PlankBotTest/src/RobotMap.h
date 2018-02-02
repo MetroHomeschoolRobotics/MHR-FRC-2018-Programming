@@ -18,6 +18,8 @@ public:
 	static std::shared_ptr<frc::DoubleSolenoid> octoDriveSwitchSol1;
 	static std::shared_ptr<frc::DoubleSolenoid> liftGrabSol1;
 
+	static std::shared_ptr<frc::Encoder> liftMotorEncoder;
+
 	static void init();
 };
 
