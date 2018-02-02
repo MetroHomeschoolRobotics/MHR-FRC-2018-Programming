@@ -3,12 +3,13 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "ctre/Phoenix.h"
 
 class BoxLift : public frc::Subsystem {
 
 private:
 
-	std::shared_ptr<frc::Spark> liftMotor;
+	std::shared_ptr<WPI_TalonSRX> liftMotor;
 	std::shared_ptr<frc::DoubleSolenoid> grabSol1;
 
 	double threshold = 0.1;

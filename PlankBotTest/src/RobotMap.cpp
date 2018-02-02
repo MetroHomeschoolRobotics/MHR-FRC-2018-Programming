@@ -8,7 +8,7 @@ std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveFrontRight;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearRight;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearLeft;
 
-std::shared_ptr<frc::Spark> RobotMap::liftMotor;
+std::shared_ptr<WPI_TalonSRX> RobotMap::liftMotor;
 
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::octoDriveSwitchSol1;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::liftGrabSol1;
@@ -25,7 +25,7 @@ void RobotMap::init() {
 
     tankDriveRearLeft.reset(new WPI_TalonSRX(1));
 
-    liftMotor.reset(new frc::Spark(0));
+    liftMotor.reset(new WPI_TalonSRX(4));
     
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
     octoDriveSwitchSol1->Set(frc::DoubleSolenoid::kReverse);
