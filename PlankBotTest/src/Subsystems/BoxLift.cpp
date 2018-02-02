@@ -13,6 +13,21 @@ BoxLift::BoxLift() : frc::Subsystem("BoxLift") {
 void BoxLift::InitDefaultCommand() {
 }
 
+void BoxLift::SetOverride(bool active){
+
+	if (active) {
+
+		inRangeOverride = true;
+
+	} else {
+
+		inRangeOverride = false;
+		liftMotor.get()->SetSelectedSensorPosition(0,0,5);
+
+	}
+
+}
+
 void BoxLift::Rotate(double r){
 
 	//Sets Threshold
@@ -25,9 +40,13 @@ void BoxLift::Rotate(double r){
 
 	//Divides Speed by Two
 	r /= 2;
+	if (inRangeOverride) {
+
+		//Sets Motor Speed
+		liftMotor.get()->Set(r);
 
 	//Restricts Movement Between Encoder Values
-	if (count > -3500 && count < 0) {
+	} else if (count > -3500 && count < 0) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
@@ -51,12 +70,6 @@ void BoxLift::Rotate(double r){
 		liftMotor.get()->Set(0.0);
 
 	}
-
-
-
-
-
-
 
 	SmartDashboard::PutNumber("Rotation Count", count);
 

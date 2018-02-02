@@ -4,7 +4,7 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class Lift: public frc::Command {
+class Lift : public frc::Command {
 
 public:
 
@@ -14,8 +14,6 @@ public:
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
-
-private:
 
 };
 

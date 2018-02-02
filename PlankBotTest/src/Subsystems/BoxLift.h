@@ -15,6 +15,7 @@ private:
 
 	double threshold = 0.1;
 	bool isHold = false;
+	bool inRangeOverride = false;
 
 public:
 
@@ -22,6 +23,7 @@ public:
 	void InitDefaultCommand();
 	void Rotate(double r);
 	void Grab();
+	void SetOverride(bool active);
 
 };
 
