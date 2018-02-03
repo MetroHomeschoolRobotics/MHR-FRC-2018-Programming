@@ -4,6 +4,7 @@
 #include "../Commands/Drive.h"
 
 std::shared_ptr<Positioning> positioning;
+std::shared_ptr<RobotDrive> driveTrain;
 
 MechDrive::MechDrive() : frc::Subsystem("MechDrive") {
 
@@ -12,6 +13,7 @@ MechDrive::MechDrive() : frc::Subsystem("MechDrive") {
     rearRight = RobotMap::tankDriveRearRight;
     rearLeft = RobotMap::tankDriveRearLeft;
     positioning = Robot::positioning;
+    driveTrain = RobotMap::mainDrive;
 }
 
 void MechDrive::InitDefaultCommand() {
@@ -36,8 +38,9 @@ void MechDrive::Move(double x, double y, double z){
 		z = 0;
 	}
 
-	frontLeft->Set(y-x+z);
+	driveTrain.get()->MecanumDrive_Cartesian(x, y, z, positioning.get()->GetAngle());
+/*	frontLeft->Set(y-x+z);
 	rearLeft->Set(y+x+z);
 	frontRight->Set(-y-x+z);
-	rearRight->Set(-y+x+z);
+	rearRight->Set(-y+x+z); */
 }

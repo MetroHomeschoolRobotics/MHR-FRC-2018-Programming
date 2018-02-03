@@ -8,7 +8,7 @@
 class RobotMap {
 
 public:
-
+	static std::shared_ptr<RobotDrive> mainDrive;
 	static std::shared_ptr<WPI_TalonSRX> tankDriveFrontLeft;
 	static std::shared_ptr<WPI_TalonSRX> tankDriveFrontRight;
 	static std::shared_ptr<WPI_TalonSRX> tankDriveRearRight;
@@ -22,6 +22,7 @@ public:
 	static std::shared_ptr<frc::Encoder> liftMotorEncoder;
 
 	static std::shared_ptr<LidarV3> lidarDistanceSensor;
+	static std::shared_ptr<AnalogGyro> gyro;
 
 	static void init();
 };
