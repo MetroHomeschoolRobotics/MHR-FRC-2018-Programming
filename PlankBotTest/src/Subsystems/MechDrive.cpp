@@ -3,13 +3,15 @@
 #include "../RobotMap.h"
 #include "../Commands/Drive.h"
 
+std::shared_ptr<Positioning> positioning;
+
 MechDrive::MechDrive() : frc::Subsystem("MechDrive") {
 
 	frontLeft = RobotMap::tankDriveFrontLeft;
     frontRight = RobotMap::tankDriveFrontRight;
     rearRight = RobotMap::tankDriveRearRight;
     rearLeft = RobotMap::tankDriveRearLeft;
-
+    positioning = Robot::positioning;
 }
 
 void MechDrive::InitDefaultCommand() {
@@ -19,6 +21,8 @@ void MechDrive::Periodic() {
 }
 
 void MechDrive::Move(double x, double y, double z){
+	double distance = positioning.get()->GetDistance();
+	SmartDashboard::PutNumber("Lidar Distance", distance);
 
 	if(fabs(x) < threshold) {
 		x = 0;

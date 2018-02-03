@@ -3,6 +3,7 @@
 
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
+#include "LidarV3.h"
 
 class RobotMap {
 
@@ -19,6 +20,8 @@ public:
 	static std::shared_ptr<frc::DoubleSolenoid> liftGrabSol1;
 
 	static std::shared_ptr<frc::Encoder> liftMotorEncoder;
+
+	static std::shared_ptr<LidarV3> lidarDistanceSensor;
 
 	static void init();
 };

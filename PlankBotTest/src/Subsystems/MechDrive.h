@@ -3,6 +3,7 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
+#include "../Subsystems/Positioning.h"
 
 class MechDrive: public frc::Subsystem {
 
@@ -12,6 +13,7 @@ private:
 	std::shared_ptr<WPI_TalonSRX> frontRight;
 	std::shared_ptr<WPI_TalonSRX> rearRight;
 	std::shared_ptr<WPI_TalonSRX> rearLeft;
+	std::shared_ptr<Positioning> positioning;
 
 	double threshold = 0.1;
 

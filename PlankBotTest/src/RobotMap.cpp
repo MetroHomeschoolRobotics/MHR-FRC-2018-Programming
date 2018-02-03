@@ -2,6 +2,7 @@
 #include "LiveWindow/LiveWindow.h"
 #include "ctre/Phoenix.h"
 #include "Spark.h"
+#include "LidarV3.h"
 
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveFrontLeft;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveFrontRight;
@@ -14,6 +15,8 @@ std::shared_ptr<frc::DoubleSolenoid> RobotMap::octoDriveSwitchSol1;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::liftGrabSol1;
 
 std::shared_ptr<frc::Encoder> RobotMap::liftMotorEncoder;
+
+std::shared_ptr<LidarV3> RobotMap::lidarDistanceSensor;
 
 void RobotMap::init() {
 
@@ -29,6 +32,8 @@ void RobotMap::init() {
 
     liftMotor.reset(new WPI_TalonSRX(4));
     
+    lidarDistanceSensor.reset(new LidarV3(new DigitalInput(0)));
+
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
     octoDriveSwitchSol1->Set(frc::DoubleSolenoid::kReverse);
     lw->AddActuator("OctaDrive", "SwitchSol1", octoDriveSwitchSol1);

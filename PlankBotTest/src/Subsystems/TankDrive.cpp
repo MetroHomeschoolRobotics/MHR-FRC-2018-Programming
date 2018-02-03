@@ -4,12 +4,11 @@
 #include "../Commands/Drive.h"
 
 TankDrive::TankDrive() : frc::Subsystem("TankDrive") {
-
     frontLeft = RobotMap::tankDriveFrontLeft;
     frontRight = RobotMap::tankDriveFrontRight;
     rearRight = RobotMap::tankDriveRearRight;
     rearLeft = RobotMap::tankDriveRearLeft;
-
+    positioning = Robot::positioning;
 }
 
 void TankDrive::InitDefaultCommand() {
@@ -19,6 +18,8 @@ void TankDrive::Periodic() {
 }
 
 void TankDrive::Move(double x, double y){
+	double distance = positioning.get()->GetDistance();
+	SmartDashboard::PutNumber("Lidar Distance", distance);
 
 	if(fabs(x) < threshold) {
 		x = 0;

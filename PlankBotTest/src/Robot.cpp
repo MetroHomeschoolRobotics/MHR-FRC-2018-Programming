@@ -7,6 +7,7 @@ std::shared_ptr<BoxLift> Robot::boxLift;
 std::shared_ptr<TankDrive> Robot::tankDrive;
 std::shared_ptr<MechDrive> Robot::mechDrive;
 std::shared_ptr<OctaDrive> Robot::octaDrive;
+std::shared_ptr<Positioning> Robot::positioning;
 
 void Robot::RobotInit() {
 
@@ -17,6 +18,8 @@ void Robot::RobotInit() {
 	liftCommand = new Lift();
 
 	//Initialize Subsystems
+	positioning.reset(new Positioning());
+
     tankDrive.reset(new TankDrive());
     mechDrive.reset(new MechDrive());
     octaDrive.reset(new OctaDrive());
