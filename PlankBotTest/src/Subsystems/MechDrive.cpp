@@ -4,7 +4,7 @@
 #include "../Commands/Drive.h"
 
 std::shared_ptr<Positioning> positioning;
-std::shared_ptr<RobotDrive> driveTrain;
+std::shared_ptr<MecanumDrive> driveTrain;
 
 MechDrive::MechDrive() : frc::Subsystem("MechDrive") {
 
@@ -26,6 +26,10 @@ void MechDrive::Move(double x, double y, double z){
 	double distance = positioning.get()->GetDistance();
 	SmartDashboard::PutNumber("Lidar Distance", distance);
 
+	// Output sensor data
+	//std::printf("Lidar Distance %4.2f \n", distance);
+	//std::printf("Gyro Angle %4.2f \n", positioning.get()->GetAngle());
+
 	if(fabs(x) < threshold) {
 		x = 0;
 	}
@@ -38,9 +42,9 @@ void MechDrive::Move(double x, double y, double z){
 		z = 0;
 	}
 
-	driveTrain.get()->MecanumDrive_Cartesian(x, y, z, positioning.get()->GetAngle());
-/*	frontLeft->Set(y-x+z);
+	//driveTrain.get()->DriveCartesian(x, y, z, positioning.get()->GetAngle());
+	frontLeft->Set(y-x+z);
 	rearLeft->Set(y+x+z);
 	frontRight->Set(-y-x+z);
-	rearRight->Set(-y+x+z); */
+	rearRight->Set(-y+x+z);
 }

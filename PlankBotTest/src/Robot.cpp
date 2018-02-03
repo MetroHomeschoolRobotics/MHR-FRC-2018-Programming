@@ -13,6 +13,8 @@ void Robot::RobotInit() {
 
 	RobotMap::init();
 
+	CameraServer::GetInstance()->StartAutomaticCapture();
+
 	//Initialize Commands
 	driveCommand = new Drive();
 	liftCommand = new Lift();

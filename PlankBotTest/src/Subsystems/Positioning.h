@@ -13,7 +13,7 @@ public:
 	Positioning();
 	void InitDefaultCommand();
 	double GetDistance();
-	float GetAngle();
+	double GetAngle();
 };
 
 #endif  // Positioning_H

@@ -14,6 +14,6 @@ double Positioning::GetDistance() {
 	return distanceSensor.get()->GetDistance();
 }
 
-float Positioning::GetAngle() {
+double Positioning::GetAngle() {
 	return gyro.get()->GetAngle();
 }

@@ -4,7 +4,7 @@
 #include "Spark.h"
 #include "LidarV3.h"
 
-std:shared_ptr<RobotDrive> RobotMap::mainDrive;
+std::shared_ptr<MecanumDrive> RobotMap::mainDrive;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveFrontLeft;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveFrontRight;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearRight;
@@ -32,13 +32,17 @@ void RobotMap::init() {
 
     tankDriveRearLeft.reset(new WPI_TalonSRX(1));
 
-    mainDrive.reset(new RobotDrive(tankDriveFrontLeft.get(), tankDriveRearLeft.get(), tankDriveFrontRight.get(), tankDriveRearRight.get()));
+    SpeedController *fLeft = tankDriveFrontLeft.get();
+    SpeedController *rLeft = tankDriveRearLeft.get();
+    SpeedController *fRight = tankDriveFrontRight.get();
+    SpeedController *rRight = tankDriveRearRight.get();
+    mainDrive.reset(new MecanumDrive(*fLeft, *rLeft, *rRight, *fRight));
 
     liftMotor.reset(new WPI_TalonSRX(4));
     
     lidarDistanceSensor.reset(new LidarV3(new DigitalInput(0)));
 
-    gyro.reset(new AnalogGyro(1));
+    gyro.reset(new AnalogGyro(0));
 
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
     octoDriveSwitchSol1->Set(frc::DoubleSolenoid::kReverse);
