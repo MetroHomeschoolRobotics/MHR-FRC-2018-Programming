@@ -8,12 +8,13 @@
 class Positioning : public frc::Subsystem {
 private:
 	std::shared_ptr<LidarV3> distanceSensor;
-	std::shared_ptr<AnalogGyro> gyro;
+	std::shared_ptr<ADXRS450_Gyro> gyro;
 public:
 	Positioning();
 	void InitDefaultCommand();
 	double GetDistance();
 	double GetAngle();
+	void ResetGyro();
 };
 
 #endif  // Positioning_H

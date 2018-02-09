@@ -13,7 +13,9 @@ void Robot::RobotInit() {
 
 	RobotMap::init();
 
-	CameraServer::GetInstance()->StartAutomaticCapture();
+	cs::UsbCamera cam = CameraServer::GetInstance()->StartAutomaticCapture();
+	cam.SetFPS(30);
+	cam.SetResolution(640,480);
 
 	//Initialize Commands
 	driveCommand = new Drive();

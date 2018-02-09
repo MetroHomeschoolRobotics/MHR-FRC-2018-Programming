@@ -22,7 +22,7 @@ public:
 	static std::shared_ptr<frc::Encoder> liftMotorEncoder;
 
 	static std::shared_ptr<LidarV3> lidarDistanceSensor;
-	static std::shared_ptr<AnalogGyro> gyro;
+	static std::shared_ptr<ADXRS450_Gyro> gyro;
 
 	static void init();
 };

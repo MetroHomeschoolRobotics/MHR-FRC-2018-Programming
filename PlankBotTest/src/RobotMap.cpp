@@ -18,7 +18,7 @@ std::shared_ptr<frc::DoubleSolenoid> RobotMap::liftGrabSol1;
 std::shared_ptr<frc::Encoder> RobotMap::liftMotorEncoder;
 
 std::shared_ptr<LidarV3> RobotMap::lidarDistanceSensor;
-std::shared_ptr<AnalogGyro> RobotMap::gyro;
+std::shared_ptr<ADXRS450_Gyro> RobotMap::gyro;
 
 void RobotMap::init() {
 
@@ -36,13 +36,13 @@ void RobotMap::init() {
     SpeedController *rLeft = tankDriveRearLeft.get();
     SpeedController *fRight = tankDriveFrontRight.get();
     SpeedController *rRight = tankDriveRearRight.get();
-    mainDrive.reset(new MecanumDrive(*fLeft, *rLeft, *rRight, *fRight));
+    mainDrive.reset(new MecanumDrive(*fLeft, *rLeft, *fRight, *rRight));
 
     liftMotor.reset(new WPI_TalonSRX(4));
     
     lidarDistanceSensor.reset(new LidarV3(new DigitalInput(0)));
 
-    gyro.reset(new AnalogGyro(0));
+    gyro.reset(new ADXRS450_Gyro());
 
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
     octoDriveSwitchSol1->Set(frc::DoubleSolenoid::kReverse);

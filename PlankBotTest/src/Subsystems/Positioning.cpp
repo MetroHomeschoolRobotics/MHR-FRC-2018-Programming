@@ -17,3 +17,7 @@ double Positioning::GetDistance() {
 double Positioning::GetAngle() {
 	return gyro.get()->GetAngle();
 }
+
+void Positioning::ResetGyro() {
+	gyro.get()->Reset();
+}
