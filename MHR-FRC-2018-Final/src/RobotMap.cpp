@@ -39,6 +39,8 @@ void RobotMap::init() {
     mainDrive.reset(new MecanumDrive(*fLeft, *rLeft, *rRight, *fRight));
 
     liftMotor.reset(new WPI_TalonSRX(4));
+    leftBoxIntake.reset(new Spark(0));
+    rightBoxIntake.reset(new Spark(1));
     
     lidarDistanceSensor.reset(new LidarV3(new DigitalInput(0)));
 

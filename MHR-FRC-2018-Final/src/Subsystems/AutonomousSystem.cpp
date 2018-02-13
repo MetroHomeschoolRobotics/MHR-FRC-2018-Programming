@@ -1,7 +1,12 @@
-#include "../RobotMap.h"
 #include "AutonomousSystem.h"
 
-AutonomousSystem::AutonomousSystem() : Subsystem("AutonomousSystem") {
+AutonomousSystem::AutonomousSystem(OctaDrive *octaDrive, BoxLift *boxLift, Positioning *positioning) : Subsystem("AutonomousSystem") {
+	drive = octaDrive;
+	lift = boxLift;
+	pos = positioning;
+	//octaDrive = Robot::octaDrive.get();
+	//boxLift = Robot::boxLift.get();
+	//positioning = Robot::positioning.get();
 
 }
 
@@ -65,17 +70,50 @@ void AutonomousSystem::AutoCenter(){
 void AutonomousSystem::DriveH(int direction){
 
 	//Move Forward
+	drive->Move(0,0,0);
 	//Move Direction * Rotation
+	while(pos->GetAngle() < 80){
+		drive->Move(0.5,0,0);
+	}
 	//MoveForward
 	//move direction * rotation
 	//MoveForward
+	while(pos->GetDistance() > 400){
+
+	}
 
 }
 
 void AutonomousSystem::DriveI(int direction){
 
+	//Move Forward
+	drive->Move(1,1,0);
+	//Move Direction * Rotation
+	while(pos->GetAngle() < 80){
+		drive->Move(0.5,0,0);
+	}
+	//MoveForward
+	//move direction * rotation
+	//MoveForward
+	while(pos->GetDistance() > 400){
+		drive->Move(1,1,0);
+	}
+
 }
 
 void AutonomousSystem::DriveV(int direction){
+
+	//Move Forward
+	drive->Move(0,0,0);
+	//Move Direction * Rotation
+	while(pos->GetAngle() < 80){
+		drive->Move(0.5,0,0);
+	}
+	//MoveForward
+	//move direction * rotation
+	//MoveForward
+	while(pos->GetDistance() > 400){
+		drive->Move(1,1,0);
+	}
 
 }

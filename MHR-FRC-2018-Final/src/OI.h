@@ -15,6 +15,8 @@ private:
 	std::shared_ptr<frc::JoystickButton> switchDriveButton;
 	std::shared_ptr<frc::JoystickButton> grabButton;
 	std::shared_ptr<frc::JoystickButton> overrideButton;
+	std::shared_ptr<frc::JoystickButton> releaseBoxButton;
+	std::shared_ptr<frc::JoystickButton> intakeBoxButton;
 	frc::SendableChooser<frc::Command*> autoChooser;
 
 public:

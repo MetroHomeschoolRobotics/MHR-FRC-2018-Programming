@@ -8,6 +8,8 @@
 #include "Commands/SwitchDrive.h"
 #include "Commands/Grab.h"
 #include "Commands/OverrideLiftRotate.h"
+#include "Commands/IntakeBox.h"
+#include "Commands/ReleaseBox.h"
 
 OI::OI() {
 
@@ -27,6 +29,8 @@ OI::OI() {
     overrideButton.reset(new frc::JoystickButton(driveJoystick.get(), 5));
     overrideButton->ToggleWhenPressed(new OverrideLiftRotate());
 
+    intakeBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
+    intakeBoxButton->WhenPressed(new IntakeBox());
     /*
 	autoChooser.AddObject("Start Left", new AutoLeft());
 	autoChooser.AddDefault("Start Center", new AutoCenter());

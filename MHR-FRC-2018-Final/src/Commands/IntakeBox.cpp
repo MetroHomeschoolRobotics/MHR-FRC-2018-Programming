@@ -1,34 +1,33 @@
-#include "AutoRight.h"
+#include "IntakeBox.h"
 
-AutoRight::AutoRight() {
+IntakeBox::IntakeBox() {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get())
-	Requires(Robot::autonomousSys.get());
+	// eg. Requires(Robot::chassis.get());
+	Requires(Robot::boxLift.get());
 }
 
 // Called just before this Command runs the first time
-void AutoRight::Initialize() {
+void IntakeBox::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void AutoRight::Execute() {
-	Robot::autonomousSys.get()->AutoLeft();
-
+void IntakeBox::Execute() {
+Robot::boxLift.get()->EatBox(true);
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool AutoRight::IsFinished() {
-	return false;
+bool IntakeBox::IsFinished() {
+	return !Robot::oi.get()->getManipulatorJoystick()->GetRawButton(4);
 }
 
 // Called once after isFinished returns true
-void AutoRight::End() {
-
+void IntakeBox::End() {
+Robot::boxLift.get()->EatBox(false);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void AutoRight::Interrupted() {
+void IntakeBox::Interrupted() {
 
 }

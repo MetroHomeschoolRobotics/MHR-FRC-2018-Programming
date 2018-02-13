@@ -24,6 +24,8 @@ public:
 	void Rotate(double r);
 	void Grab();
 	void SetOverride(bool active);
+    void EatBox(bool start);
+    void PukeBox(bool start);
 
 };
 

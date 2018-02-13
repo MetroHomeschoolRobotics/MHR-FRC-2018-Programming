@@ -87,3 +87,22 @@ void BoxLift::Grab(){
 
 }
 
+void BoxLift::EatBox(bool start){
+	if (start){
+		RobotMap::leftBoxIntake.get()->Set(-1);
+		RobotMap::rightBoxIntake.get()->Set(1);
+	}else{
+		RobotMap::leftBoxIntake.get()->Set(0);
+		RobotMap::rightBoxIntake.get()->Set(0);
+	}
+}
+
+void BoxLift::PukeBox(bool start){
+	if (start){
+		RobotMap::leftBoxIntake.get()->Set(1);
+		RobotMap::rightBoxIntake.get()->Set(-1);
+	}else{
+		RobotMap::leftBoxIntake.get()->Set(0);
+		RobotMap::rightBoxIntake.get()->Set(0);
+	}
+}

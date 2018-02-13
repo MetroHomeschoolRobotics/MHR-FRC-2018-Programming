@@ -29,7 +29,7 @@ void Robot::RobotInit() {
 
     boxLift.reset(new BoxLift());
 
-    autonomousSys.reset(new AutonomousSystem());
+    autonomousSys.reset(new AutonomousSystem(octaDrive.get(), boxLift.get(), positioning.get()));
 
     //Instantiate OI
 
