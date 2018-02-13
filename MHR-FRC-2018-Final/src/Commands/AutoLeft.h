@@ -4,18 +4,16 @@
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
 
-class Auto: public frc::Command {
+class AutoLeft: public frc::Command {
 
 public:
 
-	Auto();
+	AutoLeft();
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
-
-private:
 
 };
 

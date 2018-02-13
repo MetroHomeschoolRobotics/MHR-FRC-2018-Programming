@@ -8,6 +8,7 @@ std::shared_ptr<TankDrive> Robot::tankDrive;
 std::shared_ptr<MechDrive> Robot::mechDrive;
 std::shared_ptr<OctaDrive> Robot::octaDrive;
 std::shared_ptr<Positioning> Robot::positioning;
+std::shared_ptr<AutonomousSystem> Robot::autonomousSys;
 
 void Robot::RobotInit() {
 
@@ -28,12 +29,19 @@ void Robot::RobotInit() {
 
     boxLift.reset(new BoxLift());
 
+    autonomousSys.reset(new AutonomousSystem());
+
     //Instantiate OI
+
 	oi.reset(new OI());
+	//chooser = oi.get()->getAutoChooser();
+	chooser.reset(new frc::SendableChooser<frc::Command*>());
+	chooser.get()->AddObject("Start Left", new AutoLeft());
+	chooser.get()->AddDefault("Start Center", new AutoCenter());
+	chooser.get()->AddObject("Start Right", new AutoRight());
 
-	chooser.AddDefault("Autonomous Command", new Auto());
+	frc::SmartDashboard::PutData("Auto Modes", chooser.get());
 
-	frc::SmartDashboard::PutData("Auto Modes", &chooser);
 }
 
 void Robot::DisabledInit(){
@@ -53,7 +61,7 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 
 	//Initialize Autonomous
-	autonomousCommand = chooser.GetSelected();
+	autonomousCommand = chooser.get()->GetSelected();
 
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Start();

@@ -12,9 +12,12 @@
 
 #include "Commands/Command.h"
 
-#include "Commands/Auto.h"
+#include "Commands/AutoLeft.h"
+#include "Commands/AutoCenter.h"
+#include "Commands/AutoRight.h"
 #include "Commands/Drive.h"
 #include "Commands/Lift.h"
+#include "Subsystems/AutonomousSystem.h"
 
 #include "Subsystems/MechDrive.h"
 #include "Subsystems/TankDrive.h"
@@ -34,7 +37,7 @@ public:
 	static std::unique_ptr<OI> oi;
 
 	frc::LiveWindow *lw = frc::LiveWindow::GetInstance();
-	frc::SendableChooser<frc::Command*> chooser;
+	std::shared_ptr<frc::SendableChooser<frc::Command*>> chooser;
 
 	//Create Shared Pointers
 	static std::shared_ptr<TankDrive> tankDrive;
@@ -42,6 +45,7 @@ public:
 	static std::shared_ptr<OctaDrive> octaDrive;
 	static std::shared_ptr<BoxLift> boxLift;
 	static std::shared_ptr<Positioning> positioning;
+	static std::shared_ptr<AutonomousSystem> autonomousSys;
 
 	void RobotInit() override;
 	void DisabledInit() override;

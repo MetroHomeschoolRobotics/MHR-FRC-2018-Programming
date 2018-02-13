@@ -5,7 +5,7 @@
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
 
-class Autonomous : public frc::Subsystem {
+class AutonomousSystem : public frc::Subsystem {
 
 private:
 
@@ -14,12 +14,14 @@ private:
 
 public:
 
-	Autonomous();
+	AutonomousSystem();
 	void InitDefaultCommand();
 	void ChooseDirection();
-	void AutoLeft(int direction);
-	void AutoRight(int direction);
-	void AutoCenter(int direction);
+	void AutoLeft();
+	void AutoRight();
+	void AutoCenter();
+
+	int FindDirection();
 	void DriveH(int direction);
 	void DriveI(int direction);
 	void DriveV(int direction);
