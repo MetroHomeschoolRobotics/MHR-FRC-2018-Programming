@@ -58,6 +58,7 @@ void Robot::DisabledPeriodic() {
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Cancel();
 
+	autonomousSys->Complete();
 }
 
 void Robot::AutonomousInit() {

@@ -10,6 +10,10 @@ AutonomousSystem::AutonomousSystem(OctaDrive *octaDrive, BoxLift *boxLift, Posit
 
 }
 
+void AutonomousSystem::Complete(){
+	completed = true;
+}
+
 int AutonomousSystem::FindDirection() {
 	std::string gameData;
 	gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
@@ -43,6 +47,8 @@ void AutonomousSystem::ChooseDirection(){
 }
 
 void AutonomousSystem::AutoLeft(){
+	completed = false;
+
 	int direction = FindDirection();
 	std::printf("Direction: %d \n", direction);
 
@@ -54,6 +60,8 @@ void AutonomousSystem::AutoLeft(){
 }
 
 void AutonomousSystem::AutoRight(){
+	completed = false;
+
 	int direction = FindDirection();
 	std::printf("Direction: %d \n", direction);
 
@@ -65,6 +73,8 @@ void AutonomousSystem::AutoRight(){
 }
 
 void AutonomousSystem::AutoCenter(){
+	completed = false;
+
 	int direction = FindDirection();
 
 	DriveV(direction);
@@ -75,14 +85,14 @@ void AutonomousSystem::DriveH(int direction){
 	//Move Forward
 	drive->Move(0,0,0);
 	//Move Direction * Rotation
-	while(pos->GetAngle() < 80){
+	while(pos->GetAngle() < 80 && !completed){
 		//drive->Move(0.5,0,0);
 		return;
 	}
 	//MoveForward
 	//move direction * rotation
 	//MoveForward
-	while(pos->GetDistance() > 400){
+	while(pos->GetDistance() > 400 && !completed){
 		return;
 	}
 
@@ -93,14 +103,14 @@ void AutonomousSystem::DriveI(int direction){
 	//Move Forward
 	//drive->Move(1,1,0);
 	//Move Direction * Rotation
-	while(pos->GetAngle() < 80){
+	while(pos->GetAngle() < 80 && !completed){
 		//drive->Move(0.5,0,0);
 		return;
 	}
 	//MoveForward
 	//move direction * rotation
 	//MoveForward
-	while(pos->GetDistance() > 400){
+	while(pos->GetDistance() > 400 && !completed){
 		//drive->Move(1,1,0);
 		return;
 	}
@@ -110,7 +120,7 @@ void AutonomousSystem::DriveI(int direction){
 void AutonomousSystem::DriveV(int direction){
 	std::printf("Drive Pattern V \n");
 	//Move Forward
-	while(pos->GetDistance() > 60){
+	while(pos->GetDistance() > 60 && !completed){
 		drive->Move(0,-1,0);
 	}
 		drive->Move(0,0,0);
