@@ -11,6 +11,8 @@ std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearRight;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearLeft;
 
 std::shared_ptr<WPI_TalonSRX> RobotMap::liftMotor;
+std::shared_ptr<Spark> RobotMap::leftBoxIntake;
+std::shared_ptr<Spark> RobotMap::rightBoxIntake;
 
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::octoDriveSwitchSol1;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::liftGrabSol1;

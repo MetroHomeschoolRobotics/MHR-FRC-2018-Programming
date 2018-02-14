@@ -13,7 +13,7 @@ void AutoLeft::Execute() {
 
 bool AutoLeft::IsFinished() {
 
-	return false;
+	return true;
 
 }
 

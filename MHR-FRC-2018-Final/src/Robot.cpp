@@ -55,6 +55,8 @@ void Robot::DisabledInit(){
 void Robot::DisabledPeriodic() {
 
 	frc::Scheduler::GetInstance()->Run();
+	if (autonomousCommand != nullptr)
+		autonomousCommand->Cancel();
 
 }
 

@@ -31,6 +31,9 @@ OI::OI() {
 
     intakeBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
     intakeBoxButton->WhenPressed(new IntakeBox());
+
+    releaseBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 1));
+    releaseBoxButton->WhenPressed(new ReleaseBox());
     /*
 	autoChooser.AddObject("Start Left", new AutoLeft());
 	autoChooser.AddDefault("Start Center", new AutoCenter());
