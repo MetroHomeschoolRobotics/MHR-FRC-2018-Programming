@@ -18,7 +18,7 @@ void ReleaseBox::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ReleaseBox::IsFinished() {
-	return !Robot::oi.get()->getManipulatorJoystick()->GetRawButton(1);
+	return !Robot::oi.get()->getManipulatorJoystick()->GetRawButton(1) && !Robot::oi.get()->getDriveJoystick()->GetRawButton(3);
 }
 
 // Called once after isFinished returns true

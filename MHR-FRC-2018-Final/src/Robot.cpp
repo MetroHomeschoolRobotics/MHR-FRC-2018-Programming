@@ -90,8 +90,8 @@ void Robot::TeleopInit() {
 	if (liftCommand != nullptr)
 		liftCommand->Start();
 
-	if (clampCommand != nullptr)
-		clampCommand->Start();
+	//if (clampCommand != nullptr)
+	//	clampCommand->Start();
 }
 
 void Robot::TeleopPeriodic() {

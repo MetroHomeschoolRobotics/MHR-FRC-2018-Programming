@@ -114,17 +114,18 @@ void BoxLift::PukeBox(bool start){
 
 void BoxLift::Clamp(bool in){
 	if (in){
-		corkscrewMotor.get()->Set(1);
+		corkscrewMotor.get()->Set(.3);
 	} else {
-		corkscrewMotor.get()->Set(-1);
+		corkscrewMotor.get()->Set(-.3);
 	}
 }
+
 
 void BoxLift::ClampReset() {
 	corkscrewMotor.get()->Set(0);
 }
 
 void BoxLift::Clamp(double speed){
-	intakeLeft.get()->Set(speed/3);
-	intakeRight.get()->Set(-speed/3);
+	intakeLeft.get()->Set(speed);
+	intakeRight.get()->Set(-speed);
 }
