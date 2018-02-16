@@ -1,4 +1,5 @@
 #include "AutonomousSystem.h"
+#include <stdlib.h>
 
 AutonomousSystem::AutonomousSystem(OctaDrive *octaDrive, BoxLift *boxLift, Positioning *positioning) : Subsystem("AutonomousSystem") {
 	drive = octaDrive;
@@ -121,7 +122,16 @@ void AutonomousSystem::DriveV(int direction){
 	std::printf("Drive Pattern V \n");
 	//Move Forward
 	while(pos->GetDistance() > 60 && !completed){
-		drive->Move(0,-1,0);
+		drive->Move(0,-.4,0);
+	}
+	while(pos->GetDistance() > 30 && !completed){
+		drive->Move(0,-0.2,0);
+	}
+	drive->Move(0,0.1,0);
+
+	int i = 0;
+	while(i < 5000){
+		i++;
 	}
 		drive->Move(0,0,0);
 	/*
