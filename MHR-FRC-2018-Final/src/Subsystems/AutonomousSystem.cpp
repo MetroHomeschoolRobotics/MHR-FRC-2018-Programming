@@ -101,39 +101,51 @@ void AutonomousSystem::DriveH(int direction){
 
 void AutonomousSystem::DriveI(int direction){
 	std::printf("Drive Pattern I \n");
-	//Move Forward
-	//drive->Move(1,1,0);
-	//Move Direction * Rotation
-	while(pos->GetAngle() < 80 && !completed){
-		//drive->Move(0.5,0,0);
-		return;
-	}
-	//MoveForward
-	//move direction * rotation
-	//MoveForward
-	while(pos->GetDistance() > 400 && !completed){
-		//drive->Move(1,1,0);
-		return;
-	}
+		//Move Forward
 
+		Wait(1);
+		while(pos->GetDistance() > 60 && !completed){
+			drive->Move(0,-.4,0);
+		}
+		while(pos->GetDistance() > 30 && !completed){
+			drive->Move(0,-0.2,0);
+		}
+		drive->Move(0,0.1,0);
+
+		drive->Move(0,0,0);
 }
 
 void AutonomousSystem::DriveV(int direction){
+	int distanceY = pos->GetDistance() - 50;
+
 	std::printf("Drive Pattern V \n");
 	//Move Forward
-	while(pos->GetDistance() > 60 && !completed){
+
+	Wait(1);
+
+	while(pos->GetDistance() >= distanceY && !completed){
 		drive->Move(0,-.4,0);
 	}
-	while(pos->GetDistance() > 30 && !completed){
-		drive->Move(0,-0.2,0);
-	}
-	drive->Move(0,0.1,0);
 
-	int i = 0;
-	while(i < 5000){
-		i++;
+	if(pos->GetDistance() < distanceY && !completed){
+		drive->Move(0,0.1,0);
 	}
-		drive->Move(0,0,0);
+
+	Wait(1);
+
+	float angle = pos->GetAngle();
+
+	int i = 1;
+
+	while(i == 1  && !completed){
+		drive->Move(angle/5,0,0);
+	}
+
+	drive->Move(0,0,0);
+
+	Wait(5);
+
+	drive->Move(0,0,0);
 	/*
 	//Move Direction * Rotation
 	while(pos->GetAngle() < 80){
