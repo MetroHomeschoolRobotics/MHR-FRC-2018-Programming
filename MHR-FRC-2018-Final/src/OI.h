@@ -17,6 +17,10 @@ private:
 	std::shared_ptr<frc::JoystickButton> overrideButton;
 	std::shared_ptr<frc::JoystickButton> releaseBoxButton;
 	std::shared_ptr<frc::JoystickButton> intakeBoxButton;
+	std::shared_ptr<frc::JoystickButton> clampInButton;
+	std::shared_ptr<frc::JoystickButton> clampOutButton;
+	std::shared_ptr<frc::JoystickButton> driveEatButton;
+	std::shared_ptr<frc::JoystickButton> drivePukeButton;
 	frc::SendableChooser<frc::Command*> autoChooser;
 
 public:
@@ -29,6 +33,8 @@ public:
 	std::shared_ptr<frc::JoystickButton> getSwitchDriveButton();
 	std::shared_ptr<frc::JoystickButton> getOverrideButton();
 	frc::SendableChooser<frc::Command*> getAutoChooser();
+	std::shared_ptr<frc::JoystickButton> getClampInButton();
+	std::shared_ptr<frc::JoystickButton> getClampOutButton();
 };
 
 #endif

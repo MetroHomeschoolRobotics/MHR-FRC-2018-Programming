@@ -11,6 +11,7 @@ std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearRight;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearLeft;
 
 std::shared_ptr<WPI_TalonSRX> RobotMap::liftMotor;
+std::shared_ptr<Spark> RobotMap::corkscrewClampMotor;
 std::shared_ptr<Spark> RobotMap::leftBoxIntake;
 std::shared_ptr<Spark> RobotMap::rightBoxIntake;
 
@@ -43,6 +44,7 @@ void RobotMap::init() {
     liftMotor.reset(new WPI_TalonSRX(4));
     leftBoxIntake.reset(new Spark(0));
     rightBoxIntake.reset(new Spark(1));
+    corkscrewClampMotor.reset(new Spark(2));
     
     lidarDistanceSensor.reset(new LidarV3(new DigitalInput(0)));
 
@@ -58,5 +60,4 @@ void RobotMap::init() {
     liftGrabSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 
     liftMotorEncoder.reset(new frc::Encoder(0, 1, false, Encoder::EncodingType::k4X));
-
 }

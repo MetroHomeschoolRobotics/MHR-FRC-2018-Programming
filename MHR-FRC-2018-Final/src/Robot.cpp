@@ -19,6 +19,7 @@ void Robot::RobotInit() {
 	//Initialize Commands
 	driveCommand = new Drive();
 	liftCommand = new Lift();
+	clampCommand = new Clamp();
 
 	//Initialize Subsystems
 	positioning.reset(new Positioning());
@@ -89,6 +90,8 @@ void Robot::TeleopInit() {
 	if (liftCommand != nullptr)
 		liftCommand->Start();
 
+	if (clampCommand != nullptr)
+		clampCommand->Start();
 }
 
 void Robot::TeleopPeriodic() {

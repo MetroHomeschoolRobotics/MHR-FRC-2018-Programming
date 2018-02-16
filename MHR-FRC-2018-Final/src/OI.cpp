@@ -10,6 +10,8 @@
 #include "Commands/OverrideLiftRotate.h"
 #include "Commands/IntakeBox.h"
 #include "Commands/ReleaseBox.h"
+#include "Commands/CloseClamp.h"
+#include "Commands/OpenClamp.h"
 
 OI::OI() {
 
@@ -25,9 +27,21 @@ OI::OI() {
     grabButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
     grabButton->ToggleWhenPressed(new Grab());
 
+    clampInButton.reset(new frc::JoystickButton(driveJoystick.get(), 8));
+    clampInButton->WhenPressed(new CloseClamp());
+
+    clampOutButton.reset(new frc::JoystickButton(driveJoystick.get(), 7));
+    clampOutButton->WhenPressed(new OpenClamp());
+
     //Override Button
     overrideButton.reset(new frc::JoystickButton(driveJoystick.get(), 5));
     overrideButton->ToggleWhenPressed(new OverrideLiftRotate());
+
+    driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 10));
+    driveEatButton->WhenPressed(new IntakeBox());
+
+    drivePukeButton.reset(new frc::JoystickButton(driveJoystick.get(), 9));
+    drivePukeButton->WhenPressed(new ReleaseBox());
 
     intakeBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
     intakeBoxButton->WhenPressed(new IntakeBox());
@@ -64,4 +78,12 @@ std::shared_ptr<frc::JoystickButton> OI::getOverrideButton() {
 
 	return overrideButton;
 
+}
+
+std::shared_ptr<frc::JoystickButton> OI::getClampInButton() {
+	return clampInButton;
+}
+
+std::shared_ptr<frc::JoystickButton> OI::getClampOutButton() {
+	return clampOutButton;
 }

@@ -17,6 +17,7 @@
 #include "Commands/AutoRight.h"
 #include "Commands/Drive.h"
 #include "Commands/Lift.h"
+#include "Commands/Clamp.h"
 #include "Subsystems/AutonomousSystem.h"
 
 #include "Subsystems/MechDrive.h"
@@ -33,6 +34,7 @@ public:
 	frc::Command* autonomousCommand = nullptr;
 	frc::Command* driveCommand = nullptr;
 	frc::Command* liftCommand = nullptr;
+	frc::Command* clampCommand = nullptr;
 
 	static std::unique_ptr<OI> oi;
 

@@ -7,7 +7,9 @@ BoxLift::BoxLift() : frc::Subsystem("BoxLift") {
 	liftMotor = RobotMap::liftMotor;
 	grabSol1 = RobotMap::liftGrabSol1;
 	liftEncoder = RobotMap::liftMotorEncoder;
-
+	corkscrewMotor = RobotMap::corkscrewClampMotor;
+	intakeLeft = RobotMap::leftBoxIntake;
+	intakeRight = RobotMap::rightBoxIntake;
 }
 
 void BoxLift::InitDefaultCommand() {
@@ -38,9 +40,12 @@ void BoxLift::Rotate(double r){
 	//Grabs Encoder Values as Integer "count"
 	int count = liftMotor.get()->GetSelectedSensorPosition(0);
 
+
 	//Divides Speed by Two
-	r /= 2;
-	if (inRangeOverride) {
+	//r /= 2;
+	r = -r;
+	// override to be always on
+	if (true || inRangeOverride) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
@@ -89,20 +94,37 @@ void BoxLift::Grab(){
 
 void BoxLift::EatBox(bool start){
 	if (start){
-		RobotMap::leftBoxIntake.get()->Set(-1);
-		RobotMap::rightBoxIntake.get()->Set(1);
+		intakeLeft.get()->Set(-1);
+		intakeRight.get()->Set(1);
 	}else{
-		RobotMap::leftBoxIntake.get()->Set(0);
-		RobotMap::rightBoxIntake.get()->Set(0);
+		intakeLeft.get()->Set(0);
+		intakeRight.get()->Set(0);
 	}
 }
 
 void BoxLift::PukeBox(bool start){
 	if (start){
-		RobotMap::leftBoxIntake.get()->Set(1);
-		RobotMap::rightBoxIntake.get()->Set(-1);
+		intakeLeft.get()->Set(1);
+		intakeRight.get()->Set(-1);
 	}else{
-		RobotMap::leftBoxIntake.get()->Set(0);
-		RobotMap::rightBoxIntake.get()->Set(0);
+		intakeLeft.get()->Set(0);
+		intakeRight.get()->Set(0);
 	}
+}
+
+void BoxLift::Clamp(bool in){
+	if (in){
+		corkscrewMotor.get()->Set(1);
+	} else {
+		corkscrewMotor.get()->Set(-1);
+	}
+}
+
+void BoxLift::ClampReset() {
+	corkscrewMotor.get()->Set(0);
+}
+
+void BoxLift::Clamp(double speed){
+	intakeLeft.get()->Set(speed/3);
+	intakeRight.get()->Set(-speed/3);
 }
