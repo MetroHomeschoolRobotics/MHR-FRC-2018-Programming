@@ -21,6 +21,11 @@ void TankDrive::Move(double x, double y){
 	double distance = positioning.get()->GetDistance();
 	SmartDashboard::PutNumber("Lidar Distance", distance);
 
+	SmartDashboard::PutNumber("Front Left Enc", frontLeft->GetSelectedSensorPosition(0));
+	SmartDashboard::PutNumber("Rear Left Enc", rearLeft->GetSelectedSensorPosition(0));
+	SmartDashboard::PutNumber("Front Right Enc", frontRight->GetSelectedSensorPosition(0));
+	SmartDashboard::PutNumber("Rear Right Enc", rearRight->GetSelectedSensorPosition(0));
+
 	if(fabs(x) < threshold) {
 		x = 0;
 	}
