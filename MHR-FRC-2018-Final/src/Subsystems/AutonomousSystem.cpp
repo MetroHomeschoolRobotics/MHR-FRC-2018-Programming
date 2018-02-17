@@ -103,14 +103,15 @@ void AutonomousSystem::DriveI(int direction){
 	std::printf("Drive Pattern I \n");
 		//Move Forward
 
+	drive->SwitchMode();
+
 		Wait(1);
 		while(pos->GetDistance() > 60 && !completed){
 			drive->Move(0,-.4,0);
 		}
-		while(pos->GetDistance() > 30 && !completed){
-			drive->Move(0,-0.2,0);
+		while(pos->GetDistance() > 15 && !completed){
+			drive->Move(0,0.1,0);
 		}
-		drive->Move(0,0.1,0);
 
 		drive->Move(0,0,0);
 }
@@ -120,6 +121,8 @@ void AutonomousSystem::DriveV(int direction){
 
 	std::printf("Drive Pattern V \n");
 	//Move Forward
+
+	drive->SwitchMode();
 
 	Wait(1);
 
@@ -135,7 +138,7 @@ void AutonomousSystem::DriveV(int direction){
 
 	float angle = pos->GetAngle();
 
-	int i = 1;
+	int i = 0;
 
 	while(i == 1  && !completed){
 		drive->Move(angle/5,0,0);
