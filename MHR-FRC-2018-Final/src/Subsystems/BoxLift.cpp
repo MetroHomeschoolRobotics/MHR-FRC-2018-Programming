@@ -104,8 +104,8 @@ void BoxLift::EatBox(bool start){
 
 void BoxLift::PukeBox(bool start){
 	if (start){
-		intakeLeft.get()->Set(1);
-		intakeRight.get()->Set(-1);
+		intakeLeft.get()->Set(.5);
+		intakeRight.get()->Set(-0.5);
 
 	//Spin the wheels
 	//open the grabber
@@ -120,7 +120,7 @@ void BoxLift::PukeBox(bool start){
 
 void BoxLift::Eject(){
 	pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
-	Wait(0.2);
+	Wait(0.1);
 	pushSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 }
 

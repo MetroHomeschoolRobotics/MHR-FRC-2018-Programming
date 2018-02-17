@@ -12,6 +12,7 @@
 #include "Commands/ReleaseBox.h"
 #include "Commands/CloseClamp.h"
 #include "Commands/OpenClamp.h"
+#include "Commands/Eject.h"
 
 OI::OI() {
 
@@ -36,6 +37,9 @@ OI::OI() {
     //Override Button
     overrideButton.reset(new frc::JoystickButton(driveJoystick.get(), 5));
     overrideButton->ToggleWhenPressed(new OverrideLiftRotate());
+
+    ejectButton.reset(new frc::JoystickButton(driveJoystick.get(), 6));
+    ejectButton->ToggleWhenPressed(new Eject());
 
     driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 2));
     driveEatButton->WhenPressed(new IntakeBox());

@@ -122,6 +122,9 @@ void AutonomousSystem::DriveI(int direction){
 }
 
 void AutonomousSystem::DriveV(int direction){
+
+	int startPos = pos->GetFrontLeftDistance();
+
 	int distanceY = pos->GetDistance() - 50;
 
 	std::printf("Drive Pattern V \n");
@@ -144,9 +147,13 @@ void AutonomousSystem::DriveV(int direction){
 	int i = 1;
 
 	while(i == 1  && !completed){
+
 		drive->Move(.5,0,0);
+
 		Wait(2);
+
 		drive->Move(0,0,0);
+
 	}
 
 	drive->Move(0,0,0);
