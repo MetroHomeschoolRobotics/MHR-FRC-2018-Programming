@@ -15,6 +15,7 @@ private:
 	std::shared_ptr<Spark> corkscrewMotor;
 	std::shared_ptr<Spark> intakeLeft;
 	std::shared_ptr<Spark> intakeRight;
+	std::shared_ptr<frc::DoubleSolenoid> pushSol1;
 
 	double threshold = 0.1;
 	bool isHold = false;
@@ -27,8 +28,12 @@ public:
 	void Rotate(double r);
 	void Grab();
 	void SetOverride(bool active);
+
     void EatBox(bool start);
     void PukeBox(bool start);
+
+    void Eject();
+
     void Clamp(bool in);
     void Clamp(double speed);
     void ClampReset();

@@ -6,6 +6,7 @@ BoxLift::BoxLift() : frc::Subsystem("BoxLift") {
 
 	liftMotor = RobotMap::liftMotor;
 	grabSol1 = RobotMap::liftGrabSol1;
+	pushSol1 = RobotMap::pusherSol1;
 	liftEncoder = RobotMap::liftMotorEncoder;
 	corkscrewMotor = RobotMap::corkscrewClampMotor;
 	intakeLeft = RobotMap::leftBoxIntake;
@@ -40,11 +41,10 @@ void BoxLift::Rotate(double r){
 	//Grabs Encoder Values as Integer "count"
 	int count = liftMotor.get()->GetSelectedSensorPosition(0);
 
-
 	//Divides Speed by Two
 	//r /= 2;
-	r = -r;
-	// override to be always on
+
+	//Override to be always on
 	if (true || inRangeOverride) {
 
 		//Sets Motor Speed
@@ -106,10 +106,22 @@ void BoxLift::PukeBox(bool start){
 	if (start){
 		intakeLeft.get()->Set(1);
 		intakeRight.get()->Set(-1);
+
+	//Spin the wheels
+	//open the grabber
+	//Activate the pusher
+	//Do this all in less than a second
+
 	}else{
 		intakeLeft.get()->Set(0);
 		intakeRight.get()->Set(0);
 	}
+}
+
+void BoxLift::Eject(){
+	pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
+	Wait(0.2);
+	pushSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 }
 
 void BoxLift::Clamp(bool in){
@@ -129,3 +141,4 @@ void BoxLift::Clamp(double speed){
 	intakeLeft.get()->Set(speed);
 	intakeRight.get()->Set(-speed);
 }
+
