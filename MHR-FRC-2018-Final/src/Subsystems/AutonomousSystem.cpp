@@ -84,6 +84,11 @@ void AutonomousSystem::AutoCenter(){
 void AutonomousSystem::DriveH(int direction){
 	std::printf("Drive Pattern H \n");
 	//Move Forward
+
+	drive->SwitchMode();
+
+		Wait(1);
+
 	drive->Move(0,0,0);
 	//Move Direction * Rotation
 	while(pos->GetAngle() < 80 && !completed){
@@ -110,14 +115,14 @@ void AutonomousSystem::DriveI(int direction){
 			drive->Move(0,-.4,0);
 		}
 		while(pos->GetDistance() > 15 && !completed){
-			drive->Move(0,0.1,0);
+			drive->Move(0,0,0);
 		}
 
 		drive->Move(0,0,0);
 }
 
 void AutonomousSystem::DriveV(int direction){
-	int distanceY = pos->GetDistance() - 50;
+	int distanceY = pos->GetDistance() - 20;
 
 	std::printf("Drive Pattern V \n");
 	//Move Forward
@@ -127,21 +132,25 @@ void AutonomousSystem::DriveV(int direction){
 	Wait(1);
 
 	while(pos->GetDistance() >= distanceY && !completed){
-		drive->Move(0,-.4,0);
+		drive->Move(0,-0.4,0);
 	}
 
 	if(pos->GetDistance() < distanceY && !completed){
-		drive->Move(0,0.1,0);
+		drive->Move(0.4,-0.4,0);
 	}
 
-	Wait(1);
+	while(pos->GetDistance() < 15 && !completed){
+				drive->Move(0,0,0);
+			}
 
-	float angle = pos->GetAngle();
+/*	Wait(1);
 
-	int i = 0;
+	int i = 1;
 
 	while(i == 1  && !completed){
-		drive->Move(angle/5,0,0);
+		drive->Move(.5,0,0);
+		Wait();
+		drive->Move(0,0,0);
 	}
 
 	drive->Move(0,0,0);
@@ -149,7 +158,7 @@ void AutonomousSystem::DriveV(int direction){
 	Wait(5);
 
 	drive->Move(0,0,0);
-	/*
+
 	//Move Direction * Rotation
 	while(pos->GetAngle() < 80){
 		//drive->Move(0.5,0,0);
