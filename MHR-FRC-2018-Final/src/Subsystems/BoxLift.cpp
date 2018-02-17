@@ -94,9 +94,9 @@ void BoxLift::Grab(){
 
 void BoxLift::EatBox(bool start){
 	if (start){
-		intakeLeft.get()->Set(-1);
-		intakeRight.get()->Set(1);
-	}else{
+		intakeLeft.get()->Set(1);
+		intakeRight.get()->Set(-1);
+}else{
 		intakeLeft.get()->Set(0);
 		intakeRight.get()->Set(0);
 	}
@@ -104,9 +104,12 @@ void BoxLift::EatBox(bool start){
 
 void BoxLift::PukeBox(bool start){
 	if (start){
-		intakeLeft.get()->Set(.5);
-		intakeRight.get()->Set(-0.5);
+		intakeLeft.get()->Set(-1);
+		intakeRight.get()->Set(1);
 
+		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
+		Wait(0.3);
+		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 	//Spin the wheels
 	//open the grabber
 	//Activate the pusher

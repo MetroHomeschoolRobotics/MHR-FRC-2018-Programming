@@ -41,10 +41,10 @@ OI::OI() {
     ejectButton.reset(new frc::JoystickButton(driveJoystick.get(), 6));
     ejectButton->ToggleWhenPressed(new Eject());
 
-    driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 2));
+    driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 3));
     driveEatButton->WhenPressed(new IntakeBox());
 
-    drivePukeButton.reset(new frc::JoystickButton(driveJoystick.get(), 3));
+    drivePukeButton.reset(new frc::JoystickButton(driveJoystick.get(), 2));
     drivePukeButton->WhenPressed(new ReleaseBox());
 
     intakeBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));

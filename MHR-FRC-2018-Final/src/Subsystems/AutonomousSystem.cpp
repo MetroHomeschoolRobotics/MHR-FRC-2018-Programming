@@ -8,7 +8,7 @@ AutonomousSystem::AutonomousSystem(OctaDrive *octaDrive, BoxLift *boxLift, Posit
 	//octaDrive = Robot::octaDrive.get();
 	//boxLift = Robot::boxLift.get();
 	//positioning = Robot::positioning.get();
-
+	completed = false;
 }
 
 void AutonomousSystem::Complete(){
