@@ -14,6 +14,7 @@ MechDrive::MechDrive() : frc::Subsystem("MechDrive") {
     rearLeft = RobotMap::tankDriveRearLeft;
     positioning = Robot::positioning;
     driveTrain = RobotMap::mainDrive;
+    driveTrain.get()->SetSafetyEnabled(false);
 }
 
 void MechDrive::InitDefaultCommand() {
@@ -25,6 +26,8 @@ void MechDrive::Periodic() {
 void MechDrive::Move(double x, double y, double z){
 	double distance = positioning.get()->GetDistance();
 	SmartDashboard::PutNumber("Lidar Distance", distance);
+
+	SmartDashboard::PutNumber("Gyro", positioning.get()->GetAngle());
 
 	SmartDashboard::PutNumber("Front Left Enc", frontLeft->GetSelectedSensorPosition(0));
 	SmartDashboard::PutNumber("Rear Left Enc", rearLeft->GetSelectedSensorPosition(0));
