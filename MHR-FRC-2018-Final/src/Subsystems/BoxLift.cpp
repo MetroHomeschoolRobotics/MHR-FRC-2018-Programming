@@ -104,10 +104,12 @@ void BoxLift::EatBox(bool start){
 
 void BoxLift::PukeBox(bool start){
 	if (start){
+		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
+		Wait(0.05);
+
 		intakeLeft.get()->Set(-1);
 		intakeRight.get()->Set(1);
 
-		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
 		Wait(0.3);
 		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 	//Spin the wheels
