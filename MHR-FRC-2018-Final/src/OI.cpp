@@ -13,6 +13,7 @@
 #include "Commands/CloseClamp.h"
 #include "Commands/OpenClamp.h"
 #include "Commands/Eject.h"
+#include "Commands/ChargePneumatics.h"
 
 OI::OI() {
 
@@ -61,6 +62,7 @@ OI::OI() {
 */
 
     //SmartDashboard Buttons
+    frc::SmartDashboard::PutData("Charge Pneumatics", new ChargePneumatics());
     frc::SmartDashboard::PutData("Drive", new Drive());
     frc::SmartDashboard::PutData("SwitchDrive", new SwitchDrive());
     frc::SmartDashboard::PutData("Lift", new Lift());

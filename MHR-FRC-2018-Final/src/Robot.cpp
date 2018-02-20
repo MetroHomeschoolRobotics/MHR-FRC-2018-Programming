@@ -9,12 +9,17 @@ std::shared_ptr<MechDrive> Robot::mechDrive;
 std::shared_ptr<OctaDrive> Robot::octaDrive;
 std::shared_ptr<Positioning> Robot::positioning;
 std::shared_ptr<AutonomousSystem> Robot::autonomousSys;
+std::shared_ptr<PneumaticCharging> Robot::pneumatics;
 
 void Robot::RobotInit() {
 
 	RobotMap::init();
 
-	CameraServer::GetInstance()->StartAutomaticCapture();
+	cs::UsbCamera cam = CameraServer::GetInstance()->StartAutomaticCapture();
+	cam.SetFPS(30);
+	cam.SetResolution(640,480);
+
+	pneumatics.reset(new PneumaticCharging());
 
 	//Initialize Commands
 	driveCommand = new Drive();

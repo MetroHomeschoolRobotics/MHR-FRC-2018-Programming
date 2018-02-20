@@ -27,6 +27,7 @@ public:
 
 	static std::shared_ptr<LidarV3> lidarDistanceSensor;
 	static std::shared_ptr<AnalogGyro> gyro;
+	static std::shared_ptr<Compressor> pneumoCharger;
 
 	static void init();
 };

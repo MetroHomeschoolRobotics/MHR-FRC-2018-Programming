@@ -24,6 +24,8 @@ std::shared_ptr<frc::Encoder> RobotMap::liftMotorEncoder;
 std::shared_ptr<LidarV3> RobotMap::lidarDistanceSensor;
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
 
+std::shared_ptr<Compressor> RobotMap::pneumoCharger;
+
 void RobotMap::init() {
 
     frc::LiveWindow *lw = frc::LiveWindow::GetInstance();
@@ -65,4 +67,6 @@ void RobotMap::init() {
     pusherSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 
     liftMotorEncoder.reset(new frc::Encoder(0, 1, false, Encoder::EncodingType::k4X));
+
+    pneumoCharger.reset(new Compressor());
 }
