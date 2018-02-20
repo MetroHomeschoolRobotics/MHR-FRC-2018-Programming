@@ -8,7 +8,7 @@ AutonomousSystem::AutonomousSystem(OctaDrive *octaDrive, BoxLift *boxLift, Posit
 	//octaDrive = Robot::octaDrive.get();
 	//boxLift = Robot::boxLift.get();
 	//positioning = Robot::positioning.get();
-	completed = false;
+
 }
 
 void AutonomousSystem::Complete(){
@@ -122,10 +122,7 @@ void AutonomousSystem::DriveI(int direction){
 }
 
 void AutonomousSystem::DriveV(int direction){
-
-	int startPos = pos->GetFrontLeftDistance();
-
-	int distanceY = pos->GetDistance() - 50;
+	int distanceY = pos->GetDistance() - 20;
 
 	std::printf("Drive Pattern V \n");
 	//Move Forward
@@ -135,25 +132,25 @@ void AutonomousSystem::DriveV(int direction){
 	Wait(1);
 
 	while(pos->GetDistance() >= distanceY && !completed){
-		drive->Move(0,-.4,0);
+		drive->Move(0,-0.4,0);
 	}
 
 	if(pos->GetDistance() < distanceY && !completed){
-		drive->Move(0,0.1,0);
+		drive->Move(0.4,-0.4,0);
 	}
 
-	Wait(1);
+	while(pos->GetDistance() < 15 && !completed){
+				drive->Move(0,0,0);
+			}
+
+/*	Wait(1);
 
 	int i = 1;
 
 	while(i == 1  && !completed){
-
 		drive->Move(.5,0,0);
-
-		Wait(2);
-
+		Wait();
 		drive->Move(0,0,0);
-
 	}
 
 	drive->Move(0,0,0);
@@ -161,7 +158,7 @@ void AutonomousSystem::DriveV(int direction){
 	Wait(5);
 
 	drive->Move(0,0,0);
-	/*
+
 	//Move Direction * Rotation
 	while(pos->GetAngle() < 80){
 		//drive->Move(0.5,0,0);
