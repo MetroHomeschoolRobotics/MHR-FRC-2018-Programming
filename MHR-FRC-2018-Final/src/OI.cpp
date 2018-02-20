@@ -14,6 +14,7 @@
 #include "Commands/OpenClamp.h"
 #include "Commands/Eject.h"
 #include "Commands/ChargePneumatics.h"
+#include "Commands/Drool.h"
 
 OI::OI() {
 
@@ -29,18 +30,22 @@ OI::OI() {
     grabButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
     grabButton->ToggleWhenPressed(new Grab());
 
+    /*
     clampInButton.reset(new frc::JoystickButton(driveJoystick.get(), 8));
     clampInButton->WhenPressed(new CloseClamp());
 
     clampOutButton.reset(new frc::JoystickButton(driveJoystick.get(), 7));
     clampOutButton->WhenPressed(new OpenClamp());
+     */
 
     //Override Button
     overrideButton.reset(new frc::JoystickButton(driveJoystick.get(), 5));
     overrideButton->ToggleWhenPressed(new OverrideLiftRotate());
 
+    /*
     ejectButton.reset(new frc::JoystickButton(driveJoystick.get(), 6));
     ejectButton->ToggleWhenPressed(new Eject());
+    */
 
     driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 3));
     driveEatButton->WhenPressed(new IntakeBox());
@@ -53,6 +58,9 @@ OI::OI() {
 
     releaseBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 1));
     releaseBoxButton->WhenPressed(new ReleaseBox());
+
+    droolButton.reset(new frc::JoystickButton(driveJoystick.get(), 6));
+    droolButton->WhenPressed(new Drool());
     /*
 	autoChooser.AddObject("Start Left", new AutoLeft());
 	autoChooser.AddDefault("Start Center", new AutoCenter());

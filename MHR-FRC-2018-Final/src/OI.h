@@ -23,6 +23,7 @@ private:
 	std::shared_ptr<frc::JoystickButton> drivePukeButton;
 	frc::SendableChooser<frc::Command*> autoChooser;
 	std::shared_ptr<frc::JoystickButton> ejectButton;
+	std::shared_ptr<frc::JoystickButton> droolButton;
 
 public:
 

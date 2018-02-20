@@ -20,6 +20,8 @@ private:
 	double threshold = 0.1;
 	bool isHold = false;
 	bool inRangeOverride = false;
+	double minLift = -16500;
+	double maxLift = 0;
 
 public:
 
@@ -31,6 +33,7 @@ public:
 
     void EatBox(bool start);
     void PukeBox(bool start);
+    void DroolBox();
 
     void Eject();
 

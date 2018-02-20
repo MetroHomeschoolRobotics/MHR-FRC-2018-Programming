@@ -45,25 +45,25 @@ void BoxLift::Rotate(double r){
 	//r /= 2;
 
 	//Override to be always on
-	if (true || inRangeOverride) {
+	if (inRangeOverride) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
 
 	//Restricts Movement Between Encoder Values
-	} else if (count > -3500 && count < 0) {
+	} else if (count > minLift && count < maxLift) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
 
 	//Allows Up Movement Into Range
-	} else if (count < -3500 && r < 0) {
+	} else if (count < minLift && r < 0) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
 
 	//Allows Down Movement Into Range
-	} else if (count >= -50 && r > 0) {
+	} else if (count >= maxLift - 50 && r > 0) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
@@ -121,6 +121,17 @@ void BoxLift::PukeBox(bool start){
 		intakeLeft.get()->Set(0);
 		intakeRight.get()->Set(0);
 	}
+}
+
+void BoxLift::DroolBox(){
+	intakeLeft.get()->Set(-.5);
+	intakeRight.get()->Set(.5);
+
+	Wait(.6);
+
+	intakeLeft.get()->Set(0);
+	intakeRight.get()->Set(0);
+
 }
 
 void BoxLift::Eject(){
