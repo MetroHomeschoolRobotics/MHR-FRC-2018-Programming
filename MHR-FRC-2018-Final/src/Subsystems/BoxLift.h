@@ -40,6 +40,8 @@ public:
     void Clamp(bool in);
     void Clamp(double speed);
     void ClampReset();
+
+    int GetArmHeight();
 };
 
 #endif

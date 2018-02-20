@@ -31,6 +31,10 @@ void BoxLift::SetOverride(bool active){
 
 }
 
+int BoxLift::GetArmHeight() {
+	return liftMotor.get()->GetSelectedSensorPosition(0);
+}
+
 void BoxLift::Rotate(double r){
 
 	//Sets Threshold
@@ -94,8 +98,8 @@ void BoxLift::Grab(){
 
 void BoxLift::EatBox(bool start){
 	if (start){
-		intakeLeft.get()->Set(1);
-		intakeRight.get()->Set(-1);
+		intakeLeft.get()->Set(.5);
+		intakeRight.get()->Set(-.5);
 }else{
 		intakeLeft.get()->Set(0);
 		intakeRight.get()->Set(0);

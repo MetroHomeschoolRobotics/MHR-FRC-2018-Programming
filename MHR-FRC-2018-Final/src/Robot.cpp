@@ -88,6 +88,7 @@ void Robot::TeleopInit() {
 	//Initialize Drive and Lift and Disable Auto
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Cancel();
+	autonomousSys->Complete();
 
 	if (driveCommand != nullptr)
 		driveCommand->Start();

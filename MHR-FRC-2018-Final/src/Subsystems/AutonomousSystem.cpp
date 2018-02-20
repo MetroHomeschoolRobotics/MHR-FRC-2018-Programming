@@ -85,44 +85,46 @@ void AutonomousSystem::DriveH(int direction){
 	std::printf("Drive Pattern H \n");
 	//Move Forward
 
-	drive->SwitchMode();
-
-		Wait(1);
+	//Wait(1);
+	while(pos->GetDistance() > 70 && !completed){
+		drive->Move(0,-.4,0);
+	}
+	/*
+	while(pos->GetDistance() > 15 && !completed){
+		drive->Move(0,0,0);
+	}*/
 
 	drive->Move(0,0,0);
-	//Move Direction * Rotation
-	while(pos->GetAngle() < 80 && !completed){
-		//drive->Move(0.5,0,0);
-		return;
-	}
-	//MoveForward
-	//move direction * rotation
-	//MoveForward
-	while(pos->GetDistance() > 400 && !completed){
-		return;
-	}
-
 }
 
 void AutonomousSystem::DriveI(int direction){
 	std::printf("Drive Pattern I \n");
 		//Move Forward
 
-	drive->SwitchMode();
+	//drive->SwitchMode();
 
-		Wait(1);
-		while(pos->GetDistance() > 60 && !completed){
-			drive->Move(0,-.4,0);
+		//Wait(1);
+		while(pos->GetDistance() > 70 && !completed){
+			drive->Move(-0.05,-.4,0);
 		}
+		/*
 		while(pos->GetDistance() > 15 && !completed){
 			drive->Move(0,0,0);
-		}
+		}*/
 
 		drive->Move(0,0,0);
+
+		std::printf("Arm Height %d\n", lift->GetArmHeight());
+		while(lift->GetArmHeight() > -6500 && !completed){
+			lift->Rotate(.5);
+		}
+		lift->Rotate(0);
+
+		lift->DroolBox();
 }
 
 void AutonomousSystem::DriveV(int direction){
-	int distanceY = pos->GetDistance() - 20;
+	int distanceY = pos->GetDistance() - 40;
 
 	std::printf("Drive Pattern V \n");
 	//Move Forward
@@ -135,15 +137,36 @@ void AutonomousSystem::DriveV(int direction){
 		drive->Move(0,-0.4,0);
 	}
 
-	if(pos->GetDistance() < distanceY && !completed){
-		drive->Move(0.4,-0.4,0);
+	if (direction == 0){
+		/*
+		 drive->Move(-.5, 0, 0);
+		Wait(1);
+		drive->Move(0, -.5, 0);
+		Wait(1);
+		drive->Move(.5, 0, 0);
+		while(pos->GetDistance() >= 70 && !completed){
+			drive->Move(0,-0.5,0);
+		}
+		 */
+		while(pos->GetDistance() >= 70 && !completed){
+			drive->Move(-0.5,-0.5,0);
+		}
+	} else {
+		while(pos->GetDistance() >= 70 && !completed){
+			drive->Move(0.5,-0.5,0);
+		}
 	}
+	drive->Move(0,0,0);
 
-	while(pos->GetDistance() < 15 && !completed){
-				drive->Move(0,0,0);
-			}
+	std::printf("Arm Height %d\n", lift->GetArmHeight());
+	while(lift->GetArmHeight() > -6500 && !completed){
+		lift->Rotate(.5);
+	}
+	lift->Rotate(0);
 
-/*	Wait(1);
+	lift->DroolBox();
+
+	/*	Wait(1);
 
 	int i = 1;
 
