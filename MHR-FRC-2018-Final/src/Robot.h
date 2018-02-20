@@ -25,6 +25,7 @@
 #include "Subsystems/OctaDrive.h"
 #include "Subsystems/BoxLift.h"
 #include "Subsystems/Positioning.h"
+#include "Subsystems/PneumaticCharging.h"
 
 class Robot : public frc::TimedRobot {
 
@@ -48,6 +49,7 @@ public:
 	static std::shared_ptr<BoxLift> boxLift;
 	static std::shared_ptr<Positioning> positioning;
 	static std::shared_ptr<AutonomousSystem> autonomousSys;
+	static std::shared_ptr<PneumaticCharging> pneumatics;
 
 	void RobotInit() override;
 	void DisabledInit() override;

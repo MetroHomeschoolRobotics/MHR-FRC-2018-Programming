@@ -12,6 +12,8 @@
 #include "Commands/ReleaseBox.h"
 #include "Commands/CloseClamp.h"
 #include "Commands/OpenClamp.h"
+#include "Commands/Eject.h"
+#include "Commands/ChargePneumatics.h"
 
 OI::OI() {
 
@@ -37,10 +39,13 @@ OI::OI() {
     overrideButton.reset(new frc::JoystickButton(driveJoystick.get(), 5));
     overrideButton->ToggleWhenPressed(new OverrideLiftRotate());
 
-    driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 2));
+    ejectButton.reset(new frc::JoystickButton(driveJoystick.get(), 6));
+    ejectButton->ToggleWhenPressed(new Eject());
+
+    driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 3));
     driveEatButton->WhenPressed(new IntakeBox());
 
-    drivePukeButton.reset(new frc::JoystickButton(driveJoystick.get(), 3));
+    drivePukeButton.reset(new frc::JoystickButton(driveJoystick.get(), 2));
     drivePukeButton->WhenPressed(new ReleaseBox());
 
     intakeBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
@@ -57,6 +62,7 @@ OI::OI() {
 */
 
     //SmartDashboard Buttons
+    frc::SmartDashboard::PutData("Charge Pneumatics", new ChargePneumatics());
     frc::SmartDashboard::PutData("Drive", new Drive());
     frc::SmartDashboard::PutData("SwitchDrive", new SwitchDrive());
     frc::SmartDashboard::PutData("Lift", new Lift());
