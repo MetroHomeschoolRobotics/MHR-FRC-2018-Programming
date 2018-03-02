@@ -34,3 +34,31 @@ void OctaDrive::SwitchMode(){
 	}
 
 }
+
+bool OctaDrive::IsTankDrive() {
+	return isTank;
+}
+
+
+void OctaDrive::UpdateStatFile() {
+	ofstream statfile ("/home/lvuser/stats.txt");
+	if (statfile.is_open())
+	{
+		statfile << "{";
+		statfile << "\"GyroAngle\":" << Robot::positioning.get()->GetAngle() << ",";
+		statfile << "\"Distance\":" << Robot::positioning.get()->GetDistance() << ",";
+		statfile << "\"FrontLeft\":" << Robot::positioning.get()->GetFrontLeftDistance() << ",";
+		statfile << "\"FrontRight\":" << Robot::positioning.get()->GetFrontRightDistance() << ",";
+		statfile << "\"RearLeft\":" << Robot::positioning.get()->GetRearLeftDistance() << ",";
+		statfile << "\"RearRight\":" << Robot::positioning.get()->GetRearRightDistance() << ",";
+		if (IsTankDrive()){
+			statfile << "\"DriveMode\": \"Tank\"";
+		} else {
+			statfile << "\"DriveMode\": \"Mecanum\"";
+		}
+		statfile << "}";
+		statfile.close();
+	}
+	else cout << "Unable to open file";
+}
+

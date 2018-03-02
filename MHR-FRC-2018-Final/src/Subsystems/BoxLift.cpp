@@ -47,7 +47,7 @@ void BoxLift::Rotate(double r){
 
 	//Divides Speed by Two
 	//r /= 2;
-
+	r = -r;
 	//Override to be always on
 	if (inRangeOverride) {
 
