@@ -19,7 +19,8 @@ public:
 	void Periodic() override;
 	void Move(double x, double y, double z);
 	void SwitchMode();
-
+	bool IsTankDrive();
+	void UpdateStatFile();
 };
 
 #endif

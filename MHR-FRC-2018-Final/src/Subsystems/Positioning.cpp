@@ -9,7 +9,6 @@ Positioning::Positioning() : frc::Subsystem("PositioningSubsystem") {
 	frontRight = RobotMap::tankDriveFrontRight;
 	rearLeft = RobotMap::tankDriveRearLeft;
 	rearRight = RobotMap::tankDriveRearRight;
-
 }
 
 void Positioning::InitDefaultCommand() {
@@ -38,3 +37,5 @@ double Positioning::GetRearLeftDistance() {
 double Positioning::GetRearRightDistance() {
 	return rearRight.get()->GetSelectedSensorPosition(0);
 }
+
+

@@ -1,6 +1,7 @@
 //Include Headers
 #include "Robot.h"
 
+
 //Instantiate Pointers
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<BoxLift> Robot::boxLift;
@@ -12,6 +13,7 @@ std::shared_ptr<AutonomousSystem> Robot::autonomousSys;
 std::shared_ptr<PneumaticCharging> Robot::pneumatics;
 
 void Robot::RobotInit() {
+
 
 	RobotMap::init();
 
@@ -49,6 +51,7 @@ void Robot::RobotInit() {
 	frc::SmartDashboard::PutData("Auto Modes", chooser.get());
 
 }
+
 
 void Robot::DisabledInit(){
 
@@ -101,9 +104,8 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
-
+	octaDrive.get()->UpdateStatFile();
 	frc::Scheduler::GetInstance()->Run();
-
 }
 
 START_ROBOT_CLASS(Robot);

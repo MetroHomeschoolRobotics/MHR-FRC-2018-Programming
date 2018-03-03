@@ -6,6 +6,11 @@
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
 
+#include <iostream>
+#include <fstream>
+using namespace std;
+
+
 class Positioning : public frc::Subsystem {
 
 private:
@@ -28,7 +33,6 @@ public:
 	double GetFrontRightDistance();
 	double GetRearLeftDistance();
 	double GetRearRightDistance();
-
 };
 
 #endif  // Positioning_H
