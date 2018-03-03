@@ -13,7 +13,7 @@ void AutoRight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoRight::Execute() {
-	Robot::autonomousSys.get()->AutoLeft();
+	Robot::autonomousSys.get()->AutoRight();
 
 }
 
