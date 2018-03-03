@@ -15,9 +15,9 @@ void Robot::RobotInit() {
 
 	RobotMap::init();
 
-	cs::UsbCamera cam = CameraServer::GetInstance()->StartAutomaticCapture();
-	cam.SetFPS(30);
-	cam.SetResolution(640,480);
+	cs::UsbCamera cam0 = CameraServer::GetInstance()->StartAutomaticCapture();
+	cam0.SetFPS(30);
+	cam0.SetResolution(640,480);
 
 	pneumatics.reset(new PneumaticCharging());
 
