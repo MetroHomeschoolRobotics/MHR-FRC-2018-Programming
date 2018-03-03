@@ -8,7 +8,7 @@ AutonomousSystem::AutonomousSystem(OctaDrive *octaDrive, BoxLift *boxLift, Posit
 	//octaDrive = Robot::octaDrive.get();
 	//boxLift = Robot::boxLift.get();
 	//positioning = Robot::positioning.get();
-
+	completed = false;
 }
 
 void AutonomousSystem::Complete(){
@@ -20,15 +20,25 @@ int AutonomousSystem::FindDirection() {
 	gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 	std::printf("Game Data: %s \n", gameData.c_str());
 	int len = gameData.length();
+	int direction = -1;
 	if(len > 0) {
 	  if(gameData[0] == 'L')
 	  {
-		return 0;
+		  direction = 0;
+	  } else if(gameData[0] == 'R') {
+		  direction = 1;
 	  } else {
-		return 1;
+		  direction = -1;
 	  }
 	}
-	return -1;
+	int tries = 5;
+	int i = 0;
+	while(direction == -1 && i < tries){
+		Wait(1);
+		direction = FindDirection();
+	}
+
+	return direction;
 }
 
 void AutonomousSystem::InitDefaultCommand() {
@@ -115,7 +125,7 @@ void AutonomousSystem::DriveI(int direction){
 		drive->Move(0,0,0);
 
 		std::printf("Arm Height %d\n", lift->GetArmHeight());
-		while(lift->GetArmHeight() > -6500 && !completed){
+		while(lift->GetArmHeight() < 5500 && !completed){
 			lift->Rotate(.5);
 		}
 		lift->Rotate(0);
@@ -124,7 +134,7 @@ void AutonomousSystem::DriveI(int direction){
 }
 
 void AutonomousSystem::DriveV(int direction){
-	int distanceY = pos->GetDistance() - 40;
+	int distanceY = pos->GetDistance() - 30;
 
 	std::printf("Drive Pattern V \n");
 	//Move Forward
@@ -149,17 +159,17 @@ void AutonomousSystem::DriveV(int direction){
 		}
 		 */
 		while(pos->GetDistance() >= 70 && !completed){
-			drive->Move(-0.5,-0.5,0);
+			drive->Move(-0.6,-0.5,0);
 		}
 	} else {
 		while(pos->GetDistance() >= 70 && !completed){
-			drive->Move(0.5,-0.5,0);
+			drive->Move(0.6,-0.5,0);
 		}
 	}
 	drive->Move(0,0,0);
 
 	std::printf("Arm Height %d\n", lift->GetArmHeight());
-	while(lift->GetArmHeight() > -6500 && !completed){
+	while(lift->GetArmHeight() < 5500 && !completed){
 		lift->Rotate(.5);
 	}
 	lift->Rotate(0);

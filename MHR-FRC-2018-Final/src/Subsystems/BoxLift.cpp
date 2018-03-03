@@ -55,19 +55,19 @@ void BoxLift::Rotate(double r){
 		liftMotor.get()->Set(r);
 
 	//Restricts Movement Between Encoder Values
-	} else if (count > minLift && count < maxLift) {
+	} else if (count < minLift && count > maxLift) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
 
 	//Allows Up Movement Into Range
-	} else if (count < minLift && r < 0) {
+	} else if (count > minLift && r > 0) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
 
 	//Allows Down Movement Into Range
-	} else if (count >= maxLift - 50 && r > 0) {
+	} else if (count < maxLift + 50 && r < 0) {
 
 		//Sets Motor Speed
 		liftMotor.get()->Set(r);
