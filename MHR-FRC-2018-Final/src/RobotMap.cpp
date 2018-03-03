@@ -58,11 +58,11 @@ void RobotMap::init() {
     octoDriveSwitchSol1->SetName("OctoDrive", "SwitchSol1");
     octoDriveSwitchSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
     
-    liftGrabSol1.reset(new frc::DoubleSolenoid(0, 2, 3));
+    liftGrabSol1.reset(new frc::DoubleSolenoid(0, 4, 5));
     liftGrabSol1->SetName("Lift", "SwitchSol2");
     liftGrabSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 
-    pusherSol1.reset(new frc::DoubleSolenoid(0, 4, 5));
+    pusherSol1.reset(new frc::DoubleSolenoid(0, 2, 3));
     pusherSol1->SetName("Lift", "SwitchSol2");
     pusherSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 
