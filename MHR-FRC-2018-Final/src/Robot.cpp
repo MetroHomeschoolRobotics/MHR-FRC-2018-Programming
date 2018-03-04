@@ -13,8 +13,6 @@ std::shared_ptr<AutonomousSystem> Robot::autonomousSys;
 std::shared_ptr<PneumaticCharging> Robot::pneumatics;
 
 void Robot::RobotInit() {
-
-
 	RobotMap::init();
 
 	cs::UsbCamera cam = CameraServer::GetInstance()->StartAutomaticCapture();
@@ -104,9 +102,47 @@ void Robot::TeleopInit() {
 }
 
 void Robot::TeleopPeriodic() {
-	octaDrive.get()->UpdateStatFile();
+	try {
+		UpdateStatFile();
+	} catch (int e){
+
+	}
 	frc::Scheduler::GetInstance()->Run();
 }
+
+void Robot::UpdateStatFile() {
+	ofstream statfile ("/home/lvuser/stats.txt");
+	if (statfile.is_open())
+	{
+
+		statfile << "{";
+		statfile << "\"Alliance\":" << m_ds.GetAlliance() << ",";
+		statfile << "\"MatchType\":" << m_ds.GetMatchType() << ",";
+		statfile << "\"MatchNumber\":" << m_ds.GetMatchNumber() << ",";
+		statfile << "\"MatchTime\":" << m_ds.GetMatchTime() << ",";
+		statfile << "\"IsBrownedOut\":" << (RobotController::IsBrownedOut() == true ? "true" : "false") << ",";
+		try {
+			statfile << "\"BatteryVoltage\":" << m_ds.GetBatteryVoltage() << ",";
+		} catch (int e){
+
+		}
+		statfile << "\"GyroAngle\":" << positioning.get()->GetAngle() << ",";
+		statfile << "\"Distance\":" << positioning.get()->GetDistance() << ",";
+		statfile << "\"FrontLeft\":" << positioning.get()->GetFrontLeftDistance() << ",";
+		statfile << "\"FrontRight\":" << positioning.get()->GetFrontRightDistance() << ",";
+		statfile << "\"RearLeft\":" << positioning.get()->GetRearLeftDistance() << ",";
+		statfile << "\"RearRight\":" << positioning.get()->GetRearRightDistance() << ",";
+		if (octaDrive.get()->IsTankDrive()){
+			statfile << "\"DriveMode\": \"Tank\"";
+		} else {
+			statfile << "\"DriveMode\": \"Mecanum\"";
+		}
+		statfile << "}";
+		statfile.close();
+	}
+	else cout << "Unable to open file";
+}
+
 
 START_ROBOT_CLASS(Robot);
 

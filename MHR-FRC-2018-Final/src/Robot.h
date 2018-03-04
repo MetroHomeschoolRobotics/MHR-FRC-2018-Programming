@@ -28,6 +28,7 @@
 #include "Subsystems/PneumaticCharging.h"
 
 class Robot : public frc::TimedRobot {
+private:
 
 public:
 
@@ -58,6 +59,7 @@ public:
 	void AutonomousPeriodic() override;
 	void TeleopInit() override;
 	void TeleopPeriodic() override;
+	void UpdateStatFile();
 };
 
 #endif
