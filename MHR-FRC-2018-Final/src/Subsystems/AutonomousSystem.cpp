@@ -92,37 +92,41 @@ void AutonomousSystem::DriveH(int direction){
 	double speed = 0;
 	if (direction == 0){
 		speed = 0.5;
-		targetAngle = 90;
+		targetAngle = -90;
 	} else {
 		speed = -0.5;
-		targetAngle = -90;
+		targetAngle = 90;
 	}
 
 	drive->SwitchMode();
 	double gyro = pos->GetAngle();
 	drive->Move(speed, 0, 0);
-	Wait(2.7);
+	Wait(2.8);
 	drive->Move(0, -.5, 0);
-	Wait(3);
+	Wait(2.6);
 
 	// turn toward other side
-	while (abs(pos->GetAngle() - gyro - targetAngle) > 0.01 && RobotState::IsAutonomous()){
-		drive->Move(0, 0, speed);
+	while (abs(pos->GetAngle() - gyro - targetAngle) > 5 && RobotState::IsAutonomous()){
+		std::printf("Rotate Target %4.2f = (%4.2f - %4.2f - %4.2f) \n", abs(pos->GetAngle() - gyro - targetAngle), pos->GetAngle(), gyro, targetAngle);
+		drive->Move(0, 0, speed/2);
 	}
 
 
 	// drive toward while until next to scale
 	// Need wall to test
 	//while(pos->GetDistance() > 150 && RobotState::IsAutonomous()){
-		drive->Move(0, .5, 0);
+		drive->Move(0, -.5, 0);
 	//}
-	Wait(6);
+	if (RobotState::IsAutonomous()){
+		Wait(3.5);
+	}
 
 	gyro = pos->GetAngle();
 	// turn towards scale
 
-	while (abs(pos->GetAngle() - gyro - targetAngle) > 0.01 && RobotState::IsAutonomous()){
-		drive->Move(0, 0, speed);
+	while (abs(pos->GetAngle() - gyro - targetAngle) > 5 && RobotState::IsAutonomous()){
+		std::printf("Rotate Target %4.2f = (%4.2f - %4.2f - %4.2f) \n", abs(pos->GetAngle() - gyro - targetAngle), pos->GetAngle(), gyro, targetAngle);
+		drive->Move(0, 0, speed/2);
 	}
 
 	drive->Move(0,0,0);
