@@ -56,7 +56,6 @@ void Robot::DisabledInit(){
 	//Disable Drive
 	if (driveCommand != nullptr)
 		driveCommand->Cancel();
-
 }
 
 void Robot::DisabledPeriodic() {
@@ -65,7 +64,6 @@ void Robot::DisabledPeriodic() {
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Cancel();
 
-	autonomousSys->Complete();
 }
 
 void Robot::AutonomousInit() {
@@ -89,7 +87,6 @@ void Robot::TeleopInit() {
 	//Initialize Drive and Lift and Disable Auto
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Cancel();
-	autonomousSys->Complete();
 
 	if (driveCommand != nullptr)
 		driveCommand->Start();
@@ -142,6 +139,7 @@ void Robot::UpdateStatFile() {
 	}
 	else cout << "Unable to open file";
 }
+
 
 
 START_ROBOT_CLASS(Robot);

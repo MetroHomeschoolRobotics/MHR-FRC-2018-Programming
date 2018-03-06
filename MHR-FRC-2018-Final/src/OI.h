@@ -25,6 +25,15 @@ private:
 	std::shared_ptr<frc::JoystickButton> ejectButton;
 	std::shared_ptr<frc::JoystickButton> droolButton;
 
+	std::shared_ptr<frc::JoystickButton> manipSwitchDriveButton;
+	std::shared_ptr<frc::JoystickButton> manipGrabButton;
+	std::shared_ptr<frc::JoystickButton> manipOverrideButton;
+	std::shared_ptr<frc::JoystickButton> manipReleaseBoxButton;
+	std::shared_ptr<frc::JoystickButton> manipIntakeBoxButton;
+	std::shared_ptr<frc::JoystickButton> manipEatButton;
+	std::shared_ptr<frc::JoystickButton> manipPukeButton;
+	std::shared_ptr<frc::JoystickButton> manipDroolButton;
+
 public:
 
 	OI();
@@ -34,6 +43,7 @@ public:
 	std::shared_ptr<frc::Joystick> getManipulatorJoystick();
 	std::shared_ptr<frc::JoystickButton> getSwitchDriveButton();
 	std::shared_ptr<frc::JoystickButton> getOverrideButton();
+	std::shared_ptr<frc::JoystickButton> getManipOverrideButton();
 	frc::SendableChooser<frc::Command*> getAutoChooser();
 	std::shared_ptr<frc::JoystickButton> getClampInButton();
 	std::shared_ptr<frc::JoystickButton> getClampOutButton();

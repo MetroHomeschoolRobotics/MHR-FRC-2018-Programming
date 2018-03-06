@@ -5,13 +5,6 @@ AutonomousSystem::AutonomousSystem(OctaDrive *octaDrive, BoxLift *boxLift, Posit
 	drive = octaDrive;
 	lift = boxLift;
 	pos = positioning;
-	//octaDrive = Robot::octaDrive.get();
-	//boxLift = Robot::boxLift.get();
-	//positioning = Robot::positioning.get();
-	completed = false; }
-
-void AutonomousSystem::Complete(){
-	completed = true;
 }
 
 int AutonomousSystem::FindDirection() {
@@ -57,8 +50,6 @@ void AutonomousSystem::ChooseDirection(){
 }
 
 void AutonomousSystem::AutoLeft(){
-	completed = false;
-
 	int direction = FindDirection();
 	std::printf("Direction: %d \n", direction);
 
@@ -70,8 +61,6 @@ void AutonomousSystem::AutoLeft(){
 }
 
 void AutonomousSystem::AutoRight(){
-	completed = false;
-
 	int direction = FindDirection();
 	std::printf("Direction: %d \n", direction);
 
@@ -83,8 +72,6 @@ void AutonomousSystem::AutoRight(){
 }
 
 void AutonomousSystem::AutoCenter(){
-	completed = false;
-
 	int direction = FindDirection();
 
 	DriveV(direction);
@@ -95,15 +82,58 @@ void AutonomousSystem::DriveH(int direction){
 	//Move Forward
 
 	//Wait(1);
-	while(pos->GetDistance() > 70 && !completed){
+	while(pos->GetDistance() > 70 && RobotState::IsAutonomous()){
 		drive->Move(0,-.4,0);
 	}
-	/*
-	while(pos->GetDistance() > 15 && !completed){
-		drive->Move(0,0,0);
-	}*/
 
 	drive->Move(0,0,0);
+
+	double targetAngle = 0;
+	double speed = 0;
+	if (direction == 0){
+		speed = 0.5;
+		targetAngle = 90;
+	} else {
+		speed = -0.5;
+		targetAngle = -90;
+	}
+
+	drive->SwitchMode();
+	double gyro = pos->GetAngle();
+	drive->Move(speed, 0, 0);
+	Wait(2.7);
+	drive->Move(0, -.5, 0);
+	Wait(3);
+
+	// turn toward other side
+	while (abs(pos->GetAngle() - gyro - targetAngle) > 0.01 && RobotState::IsAutonomous()){
+		drive->Move(0, 0, speed);
+	}
+
+
+	// drive toward while until next to scale
+	// Need wall to test
+	//while(pos->GetDistance() > 150 && RobotState::IsAutonomous()){
+		drive->Move(0, .5, 0);
+	//}
+	Wait(6);
+
+	gyro = pos->GetAngle();
+	// turn towards scale
+
+	while (abs(pos->GetAngle() - gyro - targetAngle) > 0.01 && RobotState::IsAutonomous()){
+		drive->Move(0, 0, speed);
+	}
+
+	drive->Move(0,0,0);
+
+	std::printf("Arm Height %d\n", lift->GetArmHeight());
+	while(lift->GetArmHeight() < 5500 && RobotState::IsAutonomous()){
+		lift->Rotate(.5);
+	}
+	lift->Rotate(0);
+
+	lift->DroolBox();
 }
 
 void AutonomousSystem::DriveI(int direction){
@@ -113,18 +143,18 @@ void AutonomousSystem::DriveI(int direction){
 	//drive->SwitchMode();
 
 		//Wait(1);
-		while(pos->GetDistance() > 70 && !completed){
+		while(pos->GetDistance() > 70 && RobotState::IsAutonomous()){
 			drive->Move(-0.05,-.4,0);
 		}
 		/*
-		while(pos->GetDistance() > 15 && !completed){
+		while(pos->GetDistance() > 15 && && RobotState::IsAutonomous()){
 			drive->Move(0,0,0);
 		}*/
 
 		drive->Move(0,0,0);
 
 		std::printf("Arm Height %d\n", lift->GetArmHeight());
-		while(lift->GetArmHeight() < 5500 && !completed){
+		while(lift->GetArmHeight() < 5500 && RobotState::IsAutonomous()){
 			lift->Rotate(.5);
 		}
 		lift->Rotate(0);
@@ -136,12 +166,13 @@ void AutonomousSystem::DriveV(int direction){
 
 	std::printf("Drive Pattern V \n");
 	//Move Forward
+	int distanceY = pos->GetDistance() - 30;
 
 	drive->SwitchMode();
 
 	Wait(1);
 
-	while(pos->GetDistance() >= distanceY && !completed){
+	while(pos->GetDistance() >= distanceY && RobotState::IsAutonomous()){
 		drive->Move(0,-0.4,0);
 	}
 
@@ -152,22 +183,22 @@ void AutonomousSystem::DriveV(int direction){
 		drive->Move(0, -.5, 0);
 		Wait(1);
 		drive->Move(.5, 0, 0);
-		while(pos->GetDistance() >= 70 && !completed){
+		while(pos->GetDistance() >= 70 && && RobotState::IsAutonomous()){
 			drive->Move(0,-0.5,0);
 		}
 		 */
-		while(pos->GetDistance() >= 70 && !completed){
+		while(pos->GetDistance() >= 70 && RobotState::IsAutonomous()){
 			drive->Move(-0.6,-0.5,0);
 		}
 	} else {
-		while(pos->GetDistance() >= 70 && !completed){
+		while(pos->GetDistance() >= 70 && RobotState::IsAutonomous()){
 			drive->Move(0.6,-0.5,0);
 		}
 	}
 	drive->Move(0,0,0);
 
 	std::printf("Arm Height %d\n", lift->GetArmHeight());
-	while(lift->GetArmHeight() < 5500 && !completed){
+	while(lift->GetArmHeight() < 5500 && RobotState::IsAutonomous()){
 		lift->Rotate(.5);
 	}
 	lift->Rotate(0);

@@ -13,6 +13,7 @@ private:
 	bool isTank = true;
 
 public:
+	double threshold = 0.1;
 
 	OctaDrive();
 	void InitDefaultCommand() override;

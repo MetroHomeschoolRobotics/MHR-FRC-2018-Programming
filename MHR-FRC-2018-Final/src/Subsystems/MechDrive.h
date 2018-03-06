@@ -16,9 +16,8 @@ private:
 	std::shared_ptr<MecanumDrive> driveTrain;
 	std::shared_ptr<Positioning> positioning;
 
-	double threshold = 0.1;
-
 public:
+	double threshold = 0.1;
 
 	MechDrive();
 	void InitDefaultCommand() override;

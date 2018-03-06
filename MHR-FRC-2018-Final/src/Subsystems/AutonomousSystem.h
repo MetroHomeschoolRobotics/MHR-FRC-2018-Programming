@@ -18,8 +18,6 @@ private:
 	OctaDrive *drive;
 	BoxLift *lift;
 	Positioning *pos;
-	bool completed;
-
 public:
 
 	AutonomousSystem(OctaDrive *octaDrive, BoxLift *boxLift, Positioning *positioning);
@@ -28,7 +26,6 @@ public:
 	void AutoLeft();
 	void AutoRight();
 	void AutoCenter();
-	void Complete();
 
 	int FindDirection();
 	void DriveH(int direction);

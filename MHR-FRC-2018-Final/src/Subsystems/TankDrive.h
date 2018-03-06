@@ -14,9 +14,9 @@ private:
 	std::shared_ptr<WPI_TalonSRX> rearRight;
 	std::shared_ptr<WPI_TalonSRX> rearLeft;
 	std::shared_ptr<Positioning> positioning;
-	double threshold = 0.1;
 
 public:
+	double threshold = 0.1;
 
 	TankDrive();
 	void InitDefaultCommand() override;

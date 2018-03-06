@@ -12,9 +12,13 @@ void Lift::Initialize() {
 void Lift::Execute() {
 
 	Joystick *joy = Robot::oi.get()->getDriveJoystick().get();
+	Joystick *manip = Robot::oi.get()->getManipulatorJoystick().get();
 
-	Robot::boxLift.get()->Rotate(joy->GetRawAxis(5));
-
+	if (abs(joy->GetRawAxis(5)) > 0.10) {
+		Robot::boxLift.get()->Rotate(joy->GetRawAxis(5));
+	} else {
+		Robot::boxLift.get()->Rotate(manip->GetRawAxis(5));
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

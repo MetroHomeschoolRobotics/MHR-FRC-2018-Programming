@@ -22,7 +22,7 @@ std::shared_ptr<frc::DoubleSolenoid> RobotMap::pusherSol1;
 std::shared_ptr<frc::Encoder> RobotMap::liftMotorEncoder;
 
 std::shared_ptr<LidarV3> RobotMap::lidarDistanceSensor;
-std::shared_ptr<AnalogGyro> RobotMap::gyro;
+std::shared_ptr<ADXRS450_Gyro> RobotMap::gyro;
 
 std::shared_ptr<Compressor> RobotMap::pneumoCharger;
 
@@ -51,7 +51,7 @@ void RobotMap::init() {
     
     lidarDistanceSensor.reset(new LidarV3(new DigitalInput(0)));
 
-    gyro.reset(new AnalogGyro(0));
+    gyro.reset(new ADXRS450_Gyro());
 
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
     octoDriveSwitchSol1->Set(frc::DoubleSolenoid::kReverse);

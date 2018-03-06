@@ -17,7 +17,7 @@ private:
 
 	std::shared_ptr<LidarV3> distanceSensor;
 
-	std::shared_ptr<AnalogGyro> gyro;
+	std::shared_ptr<ADXRS450_Gyro> gyro;
 
 	std::shared_ptr<WPI_TalonSRX> frontLeft;
 	std::shared_ptr<WPI_TalonSRX> frontRight;

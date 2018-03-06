@@ -26,7 +26,7 @@ void BoxLift::SetOverride(bool active){
 
 		inRangeOverride = false;
 		liftMotor.get()->SetSelectedSensorPosition(0,0,5);
-
+		RobotMap::gyro.get()->Reset();
 	}
 
 }

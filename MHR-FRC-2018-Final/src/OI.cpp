@@ -26,48 +26,41 @@ OI::OI() {
     switchDriveButton.reset(new frc::JoystickButton(driveJoystick.get(), 1));
     switchDriveButton->ToggleWhenPressed(new SwitchDrive());
 
+    manipSwitchDriveButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 1));
+    manipSwitchDriveButton->ToggleWhenPressed(new SwitchDrive());
+
     //Grab Button
     grabButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
     grabButton->ToggleWhenPressed(new Grab());
 
-    /*
-    clampInButton.reset(new frc::JoystickButton(driveJoystick.get(), 8));
-    clampInButton->WhenPressed(new CloseClamp());
-
-    clampOutButton.reset(new frc::JoystickButton(driveJoystick.get(), 7));
-    clampOutButton->WhenPressed(new OpenClamp());
-     */
+    manipGrabButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
+    manipGrabButton->ToggleWhenPressed(new Grab());
 
     //Override Button
     overrideButton.reset(new frc::JoystickButton(driveJoystick.get(), 5));
     overrideButton->ToggleWhenPressed(new OverrideLiftRotate());
 
-    /*
-    ejectButton.reset(new frc::JoystickButton(driveJoystick.get(), 6));
-    ejectButton->ToggleWhenPressed(new Eject());
-    */
+    manipOverrideButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 5));
+    manipOverrideButton->ToggleWhenPressed(new OverrideLiftRotate());
 
     driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 3));
     driveEatButton->WhenPressed(new IntakeBox());
 
+    manipEatButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 3));
+    manipEatButton->WhenPressed(new IntakeBox());
+
     drivePukeButton.reset(new frc::JoystickButton(driveJoystick.get(), 2));
     drivePukeButton->WhenPressed(new ReleaseBox());
 
-    intakeBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
-    intakeBoxButton->WhenPressed(new IntakeBox());
-
-    releaseBoxButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 1));
-    releaseBoxButton->WhenPressed(new ReleaseBox());
+    manipPukeButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 2));
+    manipPukeButton->WhenPressed(new ReleaseBox());
 
     droolButton.reset(new frc::JoystickButton(driveJoystick.get(), 6));
     droolButton->WhenPressed(new Drool());
-    /*
-	autoChooser.AddObject("Start Left", new AutoLeft());
-	autoChooser.AddDefault("Start Center", new AutoCenter());
-	autoChooser.AddObject("Start Right", new AutoRight());
 
-	frc::SmartDashboard::PutData("Auto Modes", &autoChooser);
-*/
+    manipDroolButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 6));
+    manipDroolButton->WhenPressed(new Drool());
+
 
     //SmartDashboard Buttons
     frc::SmartDashboard::PutData("Charge Pneumatics", new ChargePneumatics());
@@ -92,6 +85,10 @@ std::shared_ptr<frc::JoystickButton> OI::getOverrideButton() {
 
 	return overrideButton;
 
+}
+
+std::shared_ptr<frc::JoystickButton> OI::getManipOverrideButton(){
+	return manipOverrideButton;
 }
 
 std::shared_ptr<frc::JoystickButton> OI::getClampInButton() {

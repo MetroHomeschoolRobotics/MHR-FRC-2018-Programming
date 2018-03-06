@@ -18,7 +18,7 @@ Robot::boxLift.get()->EatBox(true);
 
 // Make this return true when this Command no longer needs to run execute()
 bool IntakeBox::IsFinished() {
-	return !Robot::oi.get()->getManipulatorJoystick()->GetRawButton(4) && !Robot::oi.get()->getDriveJoystick()->GetRawButton(3);
+	return !Robot::oi.get()->getManipulatorJoystick()->GetRawButton(3) && !Robot::oi.get()->getDriveJoystick()->GetRawButton(3);
 }
 
 // Called once after isFinished returns true
