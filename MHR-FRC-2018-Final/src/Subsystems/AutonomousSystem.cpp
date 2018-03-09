@@ -81,9 +81,11 @@ void AutonomousSystem::DriveH(int direction){
 	std::printf("Drive Pattern H \n");
 	//Move Forward
 
+	double gyro = pos->GetAngle();
+
 	//Wait(1);
-	while(pos->GetDistance() > 85 && RobotState::IsAutonomous()){
-		drive->Move(0,-.7,0);
+	while(pos->GetDistance() > 100 && RobotState::IsAutonomous()){
+		drive->Move(0,-.65,0);
 	}
 
 	drive->Move(0,0,0);
@@ -92,43 +94,47 @@ void AutonomousSystem::DriveH(int direction){
 	double speed = 0;
 	if (direction == 0){
 		speed = 0.5;
-		targetAngle = -90;
+		targetAngle = -85;
 	} else {
 		speed = -0.5;
-		targetAngle = 90;
+		targetAngle = 85;
 	}
 
 	drive->SwitchMode();
-	double gyro = pos->GetAngle();
 	drive->Move(speed, 0, 0);
 	Wait(2.8);
 	drive->Move(0, -.5, 0);
-	Wait(2.6);
+	Wait(2.65);
 
 	// turn toward other side
 	while (abs(pos->GetAngle() - gyro - targetAngle) > 5 && RobotState::IsAutonomous()){
 		std::printf("Rotate Target %4.2f = (%4.2f - %4.2f - %4.2f) \n", abs(pos->GetAngle() - gyro - targetAngle), pos->GetAngle(), gyro, targetAngle);
-		drive->Move(0, 0, speed);
+		drive->Move(0, 0, speed - speed/3);
 	}
 
+	drive->SwitchMode();
 
 	// drive toward while until next to scale
 	// Need wall to test
 	//while(pos->GetDistance() > 150 && RobotState::IsAutonomous()){
-		drive->Move(0, -1, 0);
+		drive->Move(0, -.7, 0);
 	//}
 	if (RobotState::IsAutonomous()){
 		Wait(1.75);
 	}
+
+	drive->SwitchMode();
 
 	gyro = pos->GetAngle();
 	// turn towards scale
 
 	while (abs(pos->GetAngle() - gyro - targetAngle) > 5 && RobotState::IsAutonomous()){
 		std::printf("Rotate Target %4.2f = (%4.2f - %4.2f - %4.2f) \n", abs(pos->GetAngle() - gyro - targetAngle), pos->GetAngle(), gyro, targetAngle);
-		drive->Move(0, 0, speed);
+		drive->Move(0, 0, speed - speed/3);
 	}
 
+	drive->Move(0,-.4,0);
+	Wait(.4);
 	drive->Move(0,0,0);
 
 	std::printf("Arm Height %d\n", lift->GetArmHeight());
@@ -191,12 +197,12 @@ void AutonomousSystem::DriveV(int direction){
 			drive->Move(0,-0.5,0);
 		}
 		 */
-		while(pos->GetDistance() >= 70 && RobotState::IsAutonomous()){
-			drive->Move(-0.6,-0.5,0);
+		while(pos->GetDistance() >= 50 && RobotState::IsAutonomous()){
+			drive->Move(-0.8,-0.5,0);
 		}
 	} else {
-		while(pos->GetDistance() >= 70 && RobotState::IsAutonomous()){
-			drive->Move(0.6,-0.5,0);
+		while(pos->GetDistance() >= 50 && RobotState::IsAutonomous()){
+			drive->Move(0.5,-0.5,0);
 		}
 	}
 	drive->Move(0,0,0);
