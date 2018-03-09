@@ -35,6 +35,7 @@ int BoxLift::GetArmHeight() {
 	return liftMotor.get()->GetSelectedSensorPosition(0);
 }
 
+
 void BoxLift::Rotate(double r){
 
 	//Sets Threshold
@@ -109,7 +110,7 @@ void BoxLift::EatBox(bool start){
 void BoxLift::PukeBox(bool start){
 	if (start){
 		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
-		Wait(0.10);
+		Wait(0.15);
 
 		intakeLeft.get()->Set(-1);
 		intakeRight.get()->Set(1);
@@ -128,8 +129,8 @@ void BoxLift::PukeBox(bool start){
 }
 
 void BoxLift::DroolBox(){
-	intakeLeft.get()->Set(-.5);
-	intakeRight.get()->Set(.5);
+	intakeLeft.get()->Set(-.6);
+	intakeRight.get()->Set(.6);
 
 	Wait(.6);
 

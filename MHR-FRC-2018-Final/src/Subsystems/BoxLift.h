@@ -22,7 +22,6 @@ private:
 	bool inRangeOverride = false;
 	double minLift = 16500;
 	double maxLift = 0;
-
 public:
 
 	BoxLift();
@@ -34,6 +33,7 @@ public:
     void EatBox(bool start);
     void PukeBox(bool start);
     void DroolBox();
+    void ArmPreset(int position);
 
     void Eject();
 

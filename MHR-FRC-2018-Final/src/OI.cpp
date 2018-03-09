@@ -15,6 +15,7 @@
 #include "Commands/Eject.h"
 #include "Commands/ChargePneumatics.h"
 #include "Commands/Drool.h"
+#include "Commands/ArmPreset.h"
 
 OI::OI() {
 
@@ -40,8 +41,8 @@ OI::OI() {
     overrideButton.reset(new frc::JoystickButton(driveJoystick.get(), 5));
     overrideButton->ToggleWhenPressed(new OverrideLiftRotate());
 
-    manipOverrideButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 5));
-    manipOverrideButton->ToggleWhenPressed(new OverrideLiftRotate());
+    //manipOverrideButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 5));
+    //manipOverrideButton->ToggleWhenPressed(new OverrideLiftRotate());
 
     driveEatButton.reset(new frc::JoystickButton(driveJoystick.get(), 3));
     driveEatButton->WhenPressed(new IntakeBox());
@@ -61,6 +62,11 @@ OI::OI() {
     manipDroolButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 6));
     manipDroolButton->WhenPressed(new Drool());
 
+    frc::JoystickButton *armPreset1 = new frc::JoystickButton(driveJoystick.get(), 7);
+    armPreset1->WhenPressed(new ArmPreset(4800));
+
+    frc::JoystickButton *armPreset2 = new frc::JoystickButton(driveJoystick.get(), 8);
+    armPreset2->WhenPressed(new ArmPreset(9600));
 
     //SmartDashboard Buttons
     frc::SmartDashboard::PutData("Charge Pneumatics", new ChargePneumatics());
@@ -72,9 +78,7 @@ OI::OI() {
 }
 
 std::shared_ptr<frc::Joystick> OI::getDriveJoystick() {
-
 	return driveJoystick;
-
 }
 
 std::shared_ptr<frc::Joystick> OI::getManipulatorJoystick() {
@@ -82,9 +86,7 @@ std::shared_ptr<frc::Joystick> OI::getManipulatorJoystick() {
 }
 
 std::shared_ptr<frc::JoystickButton> OI::getOverrideButton() {
-
 	return overrideButton;
-
 }
 
 std::shared_ptr<frc::JoystickButton> OI::getManipOverrideButton(){
