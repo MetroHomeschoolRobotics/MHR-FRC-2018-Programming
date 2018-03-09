@@ -20,16 +20,23 @@ void ArmPreset::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void ArmPreset::Execute() {
 	int current = _boxLift->GetArmHeight();
+	double move = 0;
 	if (current < _target){
-		_boxLift->Rotate(1);
+		move = 1;
 	} else {
-		_boxLift->Rotate(-1);
+		move = -1;
 	}
+
+	if (abs(current - _target) < 500){
+		move /= 4;
+	}
+
+	_boxLift->Rotate(move);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ArmPreset::IsFinished() {
-	return abs(_boxLift->GetArmHeight() - _target) < 50;
+	return abs(_boxLift->GetArmHeight() - _target) < 15;
 }
 
 // Called once after isFinished returns true

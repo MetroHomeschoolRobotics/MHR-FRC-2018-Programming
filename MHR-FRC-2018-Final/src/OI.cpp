@@ -66,7 +66,7 @@ OI::OI() {
     armPreset1->WhenPressed(new ArmPreset(4800));
 
     frc::JoystickButton *armPreset2 = new frc::JoystickButton(driveJoystick.get(), 8);
-    armPreset2->WhenPressed(new ArmPreset(9600));
+    armPreset2->WhenPressed(new ArmPreset(14000));
 
     //SmartDashboard Buttons
     frc::SmartDashboard::PutData("Charge Pneumatics", new ChargePneumatics());
