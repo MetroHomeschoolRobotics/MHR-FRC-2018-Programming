@@ -178,6 +178,8 @@ void AutonomousSystem::DriveV(int direction){
 	//Move Forward
 	int distanceY = pos->GetDistance() - 30;
 
+	double gyro = pos->GetAngle();
+
 	drive->SwitchMode();
 
 	Wait(1);
@@ -197,8 +199,10 @@ void AutonomousSystem::DriveV(int direction){
 			drive->Move(0,-0.5,0);
 		}
 		 */
+		drive->Move(-0.8,-0.5,0);
+		Wait(1.7);
 		while(pos->GetDistance() >= 50 && RobotState::IsAutonomous()){
-			drive->Move(-0.8,-0.5,0);
+			drive->Move(0,-0.5,0);
 		}
 	} else {
 		while(pos->GetDistance() >= 50 && RobotState::IsAutonomous()){

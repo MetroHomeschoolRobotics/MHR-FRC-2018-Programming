@@ -7,6 +7,7 @@ BoxLift::BoxLift() : frc::Subsystem("BoxLift") {
 	liftMotor = RobotMap::liftMotor;
 	grabSol1 = RobotMap::liftGrabSol1;
 	pushSol1 = RobotMap::pusherSol1;
+	pushSol2 = RobotMap::pusherSol2;
 	liftEncoder = RobotMap::liftMotorEncoder;
 	corkscrewMotor = RobotMap::corkscrewClampMotor;
 	intakeLeft = RobotMap::leftBoxIntake;
@@ -110,13 +111,14 @@ void BoxLift::EatBox(bool start){
 void BoxLift::PukeBox(bool start){
 	if (start){
 		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
-		Wait(0.15);
+		pushSol2.get()->Set(frc::DoubleSolenoid::Value::kForward);
 
 		intakeLeft.get()->Set(-1);
 		intakeRight.get()->Set(1);
 
 		Wait(0.3);
 		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
+		pushSol2.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 	//Spin the wheels
 	//open the grabber
 	//Activate the pusher
@@ -141,8 +143,10 @@ void BoxLift::DroolBox(){
 
 void BoxLift::Eject(){
 	pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
+	pushSol2.get()->Set(frc::DoubleSolenoid::Value::kForward);
 	Wait(0.1);
 	pushSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
+	pushSol2.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 }
 
 void BoxLift::Clamp(bool in){

@@ -18,6 +18,7 @@ std::shared_ptr<Spark> RobotMap::rightBoxIntake;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::octoDriveSwitchSol1;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::liftGrabSol1;
 std::shared_ptr<frc::DoubleSolenoid> RobotMap::pusherSol1;
+std::shared_ptr<frc::DoubleSolenoid> RobotMap::pusherSol2;
 
 std::shared_ptr<frc::Encoder> RobotMap::liftMotorEncoder;
 
@@ -58,13 +59,14 @@ void RobotMap::init() {
     octoDriveSwitchSol1->SetName("OctoDrive", "SwitchSol1");
     octoDriveSwitchSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
     
-    liftGrabSol1.reset(new frc::DoubleSolenoid(0, 4, 5));
-    liftGrabSol1->SetName("Lift", "SwitchSol2");
-    liftGrabSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 
     pusherSol1.reset(new frc::DoubleSolenoid(0, 2, 3));
     pusherSol1->SetName("Lift", "SwitchSol2");
     pusherSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
+
+    pusherSol2.reset(new frc::DoubleSolenoid(0, 4, 5));
+    pusherSol2->SetName("Lift", "SwitchSol2");
+    pusherSol2.get()->Set(frc::DoubleSolenoid::Value::kReverse);
 
     liftMotorEncoder.reset(new frc::Encoder(0, 1, false, Encoder::EncodingType::k4X));
 

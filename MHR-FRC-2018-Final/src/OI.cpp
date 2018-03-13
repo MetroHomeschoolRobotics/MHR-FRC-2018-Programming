@@ -68,6 +68,12 @@ OI::OI() {
     frc::JoystickButton *armPreset2 = new frc::JoystickButton(driveJoystick.get(), 8);
     armPreset2->WhenPressed(new ArmPreset(4800));
 
+    frc::JoystickButton *manipArmPreset1 = new frc::JoystickButton(manipulatorJoystick.get(), 7);
+    manipArmPreset1->WhenPressed(new ArmPreset(12000));
+
+    frc::JoystickButton *manipArmPreset2 = new frc::JoystickButton(manipulatorJoystick.get(), 8);
+    manipArmPreset2->WhenPressed(new ArmPreset(4800));
+
     //SmartDashboard Buttons
     frc::SmartDashboard::PutData("Charge Pneumatics", new ChargePneumatics());
     frc::SmartDashboard::PutData("Drive", new Drive());

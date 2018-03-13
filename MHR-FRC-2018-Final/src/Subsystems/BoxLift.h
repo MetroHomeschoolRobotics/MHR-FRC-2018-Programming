@@ -16,6 +16,7 @@ private:
 	std::shared_ptr<Spark> intakeLeft;
 	std::shared_ptr<Spark> intakeRight;
 	std::shared_ptr<frc::DoubleSolenoid> pushSol1;
+	std::shared_ptr<frc::DoubleSolenoid> pushSol2;
 
 	double threshold = 0.1;
 	bool isHold = false;
