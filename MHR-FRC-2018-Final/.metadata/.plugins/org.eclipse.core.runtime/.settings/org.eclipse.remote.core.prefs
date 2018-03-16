@@ -1,0 +1,5 @@
+connections/org.eclipse.remote.JSch/roboRIO-1825-FRC.local/JSCH_ADDRESS_ATTR=roboRIO-1825-FRC.local
+connections/org.eclipse.remote.JSch/roboRIO-1825-FRC.local/JSCH_IS_PASSWORD_ATTR=true
+connections/org.eclipse.remote.JSch/roboRIO-1825-FRC.local/JSCH_USERNAME_ATTR=lvuser
+connections/org.eclipse.remote.JSch/roboRIO-1825-FRC.local/JSCH_USE_LOGIN_SHELL_ATTR=false
+eclipse.preferences.version=1

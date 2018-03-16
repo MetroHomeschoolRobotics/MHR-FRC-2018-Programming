@@ -42,10 +42,12 @@ void BoxLift::Rotate(double r){
 	//Sets Threshold
 	if(fabs(r) < threshold) {
 			r = 0;
+
 	}
 
 	//Grabs Encoder Values as Integer "count"
 	int count = liftMotor.get()->GetSelectedSensorPosition(0);
+
 
 	//Divides Speed by Two
 	//r /= 2;

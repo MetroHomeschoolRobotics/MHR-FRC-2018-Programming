@@ -138,7 +138,7 @@ void AutonomousSystem::DriveH(int direction){
 	drive->Move(0,0,0);
 
 	std::printf("Arm Height %d\n", lift->GetArmHeight());
-	while(lift->GetArmHeight() < 5500 && RobotState::IsAutonomous()){
+	while(lift->GetArmHeight() < 7800 && RobotState::IsAutonomous()){
 		lift->Rotate(.5);
 	}
 	lift->Rotate(0);
@@ -164,7 +164,7 @@ void AutonomousSystem::DriveI(int direction){
 		drive->Move(0,0,0);
 
 		std::printf("Arm Height %d\n", lift->GetArmHeight());
-		while(lift->GetArmHeight() < 5500 && RobotState::IsAutonomous()){
+		while(lift->GetArmHeight() < 7800 && RobotState::IsAutonomous()){
 			lift->Rotate(.5);
 		}
 		lift->Rotate(0);
@@ -212,7 +212,7 @@ void AutonomousSystem::DriveV(int direction){
 	drive->Move(0,0,0);
 
 	std::printf("Arm Height %d\n", lift->GetArmHeight());
-	while(lift->GetArmHeight() < 5500 && RobotState::IsAutonomous()){
+	while(lift->GetArmHeight() < 7800 && RobotState::IsAutonomous()){
 		lift->Rotate(.5);
 	}
 	lift->Rotate(0);
