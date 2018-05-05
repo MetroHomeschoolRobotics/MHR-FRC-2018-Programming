@@ -3,6 +3,8 @@
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
+#include "AutoRightLeft.h"
+#include "AutoRightRight.h"
 
 class AutoRight : public frc::Command {
 public:

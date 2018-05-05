@@ -35,17 +35,11 @@ void Robot::RobotInit() {
 
     boxLift.reset(new BoxLift());
 
-    autonomousSys.reset(new AutonomousSystem(octaDrive.get(), boxLift.get(), positioning.get()));
+    autonomousSys.reset(new AutonomousSystem());
 
     //Instantiate OI
-
 	oi.reset(new OI());
-	//chooser = oi.get()->getAutoChooser();
-	chooser.reset(new frc::SendableChooser<frc::Command*>());
-	chooser.get()->AddObject("Start Left", new AutoLeft());
-	chooser.get()->AddDefault("Start Center", new AutoCenter());
-	chooser.get()->AddObject("Start Right", new AutoRight());
-
+	chooser.reset(oi.get()->getAutoChooser());
 	frc::SmartDashboard::PutData("Auto Modes", chooser.get());
 
 }

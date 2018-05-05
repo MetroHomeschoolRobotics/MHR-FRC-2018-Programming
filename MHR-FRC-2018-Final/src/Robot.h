@@ -39,8 +39,6 @@ public:
 	frc::Command* clampCommand = nullptr;
 
 	static std::unique_ptr<OI> oi;
-
-	frc::LiveWindow *lw = frc::LiveWindow::GetInstance();
 	std::shared_ptr<frc::SendableChooser<frc::Command*>> chooser;
 
 	//Create Shared Pointers

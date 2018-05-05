@@ -83,6 +83,14 @@ OI::OI() {
     frc::SmartDashboard::PutData("OverrideLiftRotate", new OverrideLiftRotate());
 }
 
+frc::SendableChooser<frc::Command*> *OI::getAutoChooser() {
+	frc::SendableChooser<frc::Command*> *chooser = new frc::SendableChooser<frc::Command*>();
+	chooser->AddObject("Start Left", new AutoLeft());
+	chooser->AddDefault("Start Center", new AutoCenter());
+	chooser->AddObject("Start Right", new AutoRight());
+	return chooser;
+}
+
 std::shared_ptr<frc::Joystick> OI::getDriveJoystick() {
 	return driveJoystick;
 }

@@ -9,18 +9,17 @@
 
 #include <Commands/Command.h>
 #include "../Robot.h"
-#include "../Subsystems/BoxLift.h"
 
-class ArmPreset : public frc::Command {
-private:
-	int _target;
-	BoxLift *_boxLift;
+class AutoDriveDistance : public frc::Command {
 public:
-	ArmPreset(int target);
+	AutoDriveDistance(double distance, double driveX, double driveY, double driveZ);
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End() override;
 	void Interrupted() override;
+private:
+	double startPos, targetPos;
+	double x, y, z;
 };
 

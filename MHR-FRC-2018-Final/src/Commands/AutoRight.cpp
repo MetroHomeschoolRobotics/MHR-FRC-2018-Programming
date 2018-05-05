@@ -13,8 +13,13 @@ void AutoRight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void AutoRight::Execute() {
-	Robot::autonomousSys.get()->AutoRight();
-
+	//Robot::autonomousSys.get()->AutoRight();
+	int direction = Robot::autonomousSys.get()->FindDirection();
+	if (direction == 0) {
+		Scheduler::GetInstance()->AddCommand(new AutoRightLeft());
+	} else if (direction == 1) {
+		Scheduler::GetInstance()->AddCommand(new AutoRightRight());
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()

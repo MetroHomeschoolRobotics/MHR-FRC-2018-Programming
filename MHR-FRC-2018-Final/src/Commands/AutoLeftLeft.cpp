@@ -5,22 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "AutoLeftLeft.h"
 
-#include <Commands/Command.h>
-#include "../Robot.h"
-#include "../Subsystems/BoxLift.h"
+AutoLeftLeft::AutoLeftLeft() {
 
-class ArmPreset : public frc::Command {
-private:
-	int _target;
-	BoxLift *_boxLift;
-public:
-	ArmPreset(int target);
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
-};
+	AddSequential(new AutoDriveDistance(70, -0.05, -0.4, 0));
+	AddSequential(new ArmPreset(5500));
+	AddSequential(new Drool());
 
+}

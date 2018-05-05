@@ -5,22 +5,13 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#pragma once
+#include "AutoCenterLeft.h"
 
-#include <Commands/Command.h>
-#include "../Robot.h"
-#include "../Subsystems/BoxLift.h"
-
-class ArmPreset : public frc::Command {
-private:
-	int _target;
-	BoxLift *_boxLift;
-public:
-	ArmPreset(int target);
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
-};
-
+AutoCenterLeft::AutoCenterLeft() {
+	AddSequential(new SwitchDrive());
+	AddSequential(new AutoDriveDistance(-30, 0,-0.4,0));
+	AddSequential(new AutoDrive(-0.8,-0.5,0), 1.7);
+	AddSequential(new AutoDriveDistance(50, 0,-0.5,0));
+	AddSequential(new ArmPreset(5500));
+	AddSequential(new Drool());
+}

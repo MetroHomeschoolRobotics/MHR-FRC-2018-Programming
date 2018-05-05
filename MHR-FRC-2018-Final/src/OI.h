@@ -44,7 +44,7 @@ public:
 	std::shared_ptr<frc::JoystickButton> getSwitchDriveButton();
 	std::shared_ptr<frc::JoystickButton> getOverrideButton();
 	std::shared_ptr<frc::JoystickButton> getManipOverrideButton();
-	frc::SendableChooser<frc::Command*> getAutoChooser();
+	frc::SendableChooser<frc::Command*> *getAutoChooser();
 	std::shared_ptr<frc::JoystickButton> getClampInButton();
 	std::shared_ptr<frc::JoystickButton> getClampOutButton();
 };

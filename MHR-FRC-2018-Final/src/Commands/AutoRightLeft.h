@@ -7,20 +7,16 @@
 
 #pragma once
 
-#include <Commands/Command.h>
-#include "../Robot.h"
-#include "../Subsystems/BoxLift.h"
+#include <Commands/CommandGroup.h>
+#include "AutoDriveDistance.h"
+#include "AutoDrive.h"
+#include "Drool.h"
+#include "ArmPreset.h"
+#include "AutoDriveTurn.h"
+#include "SwitchDrive.h"
 
-class ArmPreset : public frc::Command {
-private:
-	int _target;
-	BoxLift *_boxLift;
+class AutoRightLeft : public frc::CommandGroup {
 public:
-	ArmPreset(int target);
-	void Initialize() override;
-	void Execute() override;
-	bool IsFinished() override;
-	void End() override;
-	void Interrupted() override;
+	AutoRightLeft();
 };
 

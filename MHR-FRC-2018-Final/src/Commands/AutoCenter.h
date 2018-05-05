@@ -4,6 +4,8 @@
 
 #include "Commands/Subsystem.h"
 #include "../Robot.h"
+#include "AutoCenterLeft.h"
+#include "AutoCenterRight.h"
 
 class AutoCenter : public frc::Command {
 public:
