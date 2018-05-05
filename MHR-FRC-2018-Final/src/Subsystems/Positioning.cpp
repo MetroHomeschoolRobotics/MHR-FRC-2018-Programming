@@ -18,7 +18,7 @@ void Positioning::InitDefaultCommand() {
 
 double Positioning::GetDistance() {
 	//return ultrasonicSensor.get()->GetRangeInches();
-	return ultrasonicAnalogSensor.get()->GetVoltage();// / 512;
+	return ultrasonicAnalogSensor.get()->GetVoltage() * 512;
 	//return distanceSensor.get()->GetDistance();
 }
 
