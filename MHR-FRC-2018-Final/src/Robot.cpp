@@ -39,9 +39,6 @@ void Robot::RobotInit() {
 
     //Instantiate OI
 	oi.reset(new OI());
-	chooser.reset(oi.get()->getAutoChooser());
-	frc::SmartDashboard::PutData("Auto Modes", chooser.get());
-
 }
 
 
@@ -63,7 +60,7 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 
 	//Initialize Autonomous
-	autonomousCommand = chooser.get()->GetSelected();
+	autonomousCommand = oi.get()->getAutoChooser()->GetSelected();
 
 	if (autonomousCommand != nullptr)
 		autonomousCommand->Start();
@@ -98,7 +95,12 @@ void Robot::TeleopPeriodic() {
 	} catch (int e){
 
 	}
+	UpdateDashboardStats();
 	frc::Scheduler::GetInstance()->Run();
+}
+
+void Robot::UpdateDashboardStats() {
+	SmartDashboard::PutNumber("Distance Sensor", positioning.get()->GetDistance());
 }
 
 void Robot::UpdateStatFile() {

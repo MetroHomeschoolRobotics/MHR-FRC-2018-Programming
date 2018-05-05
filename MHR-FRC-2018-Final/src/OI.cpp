@@ -76,19 +76,20 @@ OI::OI() {
 
     //SmartDashboard Buttons
     frc::SmartDashboard::PutData("Charge Pneumatics", new ChargePneumatics());
-    frc::SmartDashboard::PutData("Drive", new Drive());
-    frc::SmartDashboard::PutData("SwitchDrive", new SwitchDrive());
-    frc::SmartDashboard::PutData("Lift", new Lift());
-    frc::SmartDashboard::PutData("Grab", new Grab());
-    frc::SmartDashboard::PutData("OverrideLiftRotate", new OverrideLiftRotate());
+    frc::SmartDashboard::PutData("Switch Drive", new SwitchDrive());
+    frc::SmartDashboard::PutData("Drool", new Drool());
+    frc::SmartDashboard::PutData("Eat", new IntakeBox());
+    frc::SmartDashboard::PutData("Puke", new ReleaseBox());
+
+    autoChooser = new frc::SendableChooser<frc::Command*>();
+    autoChooser->AddObject("Start Left", new AutoLeft());
+    autoChooser->AddDefault("Start Center", new AutoCenter());
+    autoChooser->AddObject("Start Right", new AutoRight());
+    frc::SmartDashboard::PutData("Autonomous Start", autoChooser);
 }
 
 frc::SendableChooser<frc::Command*> *OI::getAutoChooser() {
-	frc::SendableChooser<frc::Command*> *chooser = new frc::SendableChooser<frc::Command*>();
-	chooser->AddObject("Start Left", new AutoLeft());
-	chooser->AddDefault("Start Center", new AutoCenter());
-	chooser->AddObject("Start Right", new AutoRight());
-	return chooser;
+	return autoChooser;
 }
 
 std::shared_ptr<frc::Joystick> OI::getDriveJoystick() {

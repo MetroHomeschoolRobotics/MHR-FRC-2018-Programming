@@ -3,6 +3,8 @@
 
 Positioning::Positioning() : frc::Subsystem("PositioningSubsystem") {
 	distanceSensor = RobotMap::lidarDistanceSensor;
+	ultrasonicAnalogSensor = RobotMap::ultrasonicAnalogDistanceSensor;
+	ultrasonicSensor = RobotMap::ultrasonicDistanceSensor;
 	gyro = RobotMap::gyro;
 	gyro.get()->Reset();
 	frontLeft = RobotMap::tankDriveFrontLeft;
@@ -15,7 +17,9 @@ void Positioning::InitDefaultCommand() {
 }
 
 double Positioning::GetDistance() {
-	return distanceSensor.get()->GetDistance();
+	//return ultrasonicSensor.get()->GetRangeInches();
+	return ultrasonicAnalogSensor.get()->GetVoltage();// / 512;
+	//return distanceSensor.get()->GetDistance();
 }
 
 double Positioning::GetAngle() {

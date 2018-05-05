@@ -29,7 +29,7 @@
 
 class Robot : public frc::TimedRobot {
 private:
-
+	void UpdateDashboardStats();
 public:
 
 	//Create Commands
@@ -39,7 +39,6 @@ public:
 	frc::Command* clampCommand = nullptr;
 
 	static std::unique_ptr<OI> oi;
-	std::shared_ptr<frc::SendableChooser<frc::Command*>> chooser;
 
 	//Create Shared Pointers
 	static std::shared_ptr<TankDrive> tankDrive;

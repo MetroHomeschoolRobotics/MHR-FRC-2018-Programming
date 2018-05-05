@@ -26,10 +26,12 @@ std::shared_ptr<LidarV3> RobotMap::lidarDistanceSensor;
 std::shared_ptr<ADXRS450_Gyro> RobotMap::gyro;
 
 std::shared_ptr<Compressor> RobotMap::pneumoCharger;
+// For Ultrasonic: Devantech SRF04, VEX Ultrasonic Rangefinder
+std::shared_ptr<Ultrasonic> RobotMap::ultrasonicDistanceSensor;
+// For Ultrasonic: Maxbotix LV-MaxSonar-EZ1
+std::shared_ptr<AnalogInput> RobotMap::ultrasonicAnalogDistanceSensor;
 
 void RobotMap::init() {
-
-    frc::LiveWindow *lw = frc::LiveWindow::GetInstance();
 
     tankDriveFrontLeft.reset(new WPI_TalonSRX(0));
     
@@ -51,6 +53,10 @@ void RobotMap::init() {
     corkscrewClampMotor.reset(new Spark(2));
     
     lidarDistanceSensor.reset(new LidarV3(new DigitalInput(0)));
+    // For Ultrasonic: Devantech SRF04, VEX Ultrasonic Rangefinder
+    ultrasonicDistanceSensor.reset(new Ultrasonic(1, 1));
+    // For Ultrasonic: Maxbotix LV-MaxSonar-EZ1
+    ultrasonicAnalogDistanceSensor.reset(new AnalogInput(0));
 
     gyro.reset(new ADXRS450_Gyro());
 

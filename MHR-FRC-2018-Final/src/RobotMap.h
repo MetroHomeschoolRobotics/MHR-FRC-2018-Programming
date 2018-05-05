@@ -29,6 +29,8 @@ public:
 	static std::shared_ptr<LidarV3> lidarDistanceSensor;
 	static std::shared_ptr<ADXRS450_Gyro> gyro;
 	static std::shared_ptr<Compressor> pneumoCharger;
+	static std::shared_ptr<Ultrasonic> ultrasonicDistanceSensor;
+	static std::shared_ptr<AnalogInput> ultrasonicAnalogDistanceSensor;
 
 	static void init();
 };
