@@ -101,6 +101,13 @@ void Robot::TeleopPeriodic() {
 
 void Robot::UpdateDashboardStats() {
 	SmartDashboard::PutNumber("Distance Sensor", positioning.get()->GetDistance());
+	SmartDashboard::PutNumber("Gyro", positioning.get()->GetAngle());
+	SmartDashboard::PutNumber("Front Left Distance", positioning.get()->GetFrontLeftDistance());
+	SmartDashboard::PutNumber("Rear Left Distance", positioning.get()->GetRearLeftDistance());
+	SmartDashboard::PutNumber("Front Right Distance", positioning.get()->GetFrontRightDistance());
+	SmartDashboard::PutNumber("Rear Right Distance", positioning.get()->GetRearRightDistance());
+	SmartDashboard::PutNumber("Arm Rotation", positioning.get()->GetArmRotation());
+
 }
 
 void Robot::UpdateStatFile() {

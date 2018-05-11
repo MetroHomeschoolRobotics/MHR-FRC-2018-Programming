@@ -17,13 +17,27 @@ void Positioning::InitDefaultCommand() {
 }
 
 double Positioning::GetDistance() {
+	//if (ultrasonicAnalogSensor.get()->CheckAnalogInputChannel(RobotMap::UltrasonicAnalogPort)) {
+		// measured in inches
+		SmartDashboard::PutString("Distance Type", "Ultrasonic");
+		double voltage = ultrasonicAnalogSensor.get()->GetVoltage();
+		return voltage * 105;
+	//} else {
+		// measured in cm with a lot of variance
+		//SmartDashboard::PutString("Distance Type", "Lidar");
+		//return distanceSensor.get()->GetDistance();
+	//}
 	//return ultrasonicSensor.get()->GetRangeInches();
-	return ultrasonicAnalogSensor.get()->GetVoltage() * 512;
+
 	//return distanceSensor.get()->GetDistance();
 }
 
 double Positioning::GetAngle() {
 	return gyro.get()->GetAngle();
+}
+
+double Positioning::GetArmRotation() {
+	return RobotMap::liftMotor.get()->GetSelectedSensorPosition(0);
 }
 
 double Positioning::GetFrontLeftDistance() {

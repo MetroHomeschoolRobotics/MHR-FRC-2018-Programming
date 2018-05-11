@@ -83,9 +83,6 @@ void BoxLift::Rotate(double r){
 		liftMotor.get()->Set(0.0);
 
 	}
-
-	SmartDashboard::PutNumber("Rotation Count", count);
-
 }
 
 void BoxLift::Grab(){

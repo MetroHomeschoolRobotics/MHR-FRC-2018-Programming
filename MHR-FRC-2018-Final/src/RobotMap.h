@@ -31,6 +31,7 @@ public:
 	static std::shared_ptr<Compressor> pneumoCharger;
 	static std::shared_ptr<Ultrasonic> ultrasonicDistanceSensor;
 	static std::shared_ptr<AnalogInput> ultrasonicAnalogDistanceSensor;
+	static int UltrasonicAnalogPort;
 
 	static void init();
 };

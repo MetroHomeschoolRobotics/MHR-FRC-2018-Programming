@@ -35,6 +35,8 @@ public:
 	double GetFrontRightDistance();
 	double GetRearLeftDistance();
 	double GetRearRightDistance();
+
+	double GetArmRotation();
 };
 
 #endif  // Positioning_H
