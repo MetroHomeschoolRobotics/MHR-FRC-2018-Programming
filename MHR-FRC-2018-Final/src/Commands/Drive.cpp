@@ -2,7 +2,7 @@
 
 Drive::Drive(): frc::Command() {
 
-	Requires(Robot::octaDrive.get());
+	//Requires(Robot::octaDrive.get());
 
 }
 

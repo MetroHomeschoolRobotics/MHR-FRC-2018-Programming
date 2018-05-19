@@ -7,6 +7,7 @@ Positioning::Positioning() : frc::Subsystem("PositioningSubsystem") {
 	ultrasonicSensor = RobotMap::ultrasonicDistanceSensor;
 	gyro = RobotMap::gyro;
 	gyro.get()->Reset();
+	navGyro = RobotMap::navGyro;
 	frontLeft = RobotMap::tankDriveFrontLeft;
 	frontRight = RobotMap::tankDriveFrontRight;
 	rearLeft = RobotMap::tankDriveRearLeft;
@@ -33,7 +34,8 @@ double Positioning::GetDistance() {
 }
 
 double Positioning::GetAngle() {
-	return gyro.get()->GetAngle();
+	return navGyro.get()->GetAngle();
+	//return gyro.get()->GetAngle();
 }
 
 double Positioning::GetArmRotation() {

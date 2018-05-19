@@ -5,7 +5,7 @@
 #include "../LidarV3.h"
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
-
+#include <AHRS.h>
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -20,6 +20,7 @@ private:
 	std::shared_ptr<Ultrasonic> ultrasonicSensor;
 
 	std::shared_ptr<ADXRS450_Gyro> gyro;
+	std::shared_ptr<AHRS> navGyro;
 
 	std::shared_ptr<WPI_TalonSRX> frontLeft;
 	std::shared_ptr<WPI_TalonSRX> frontRight;

@@ -4,6 +4,7 @@
 #include "WPILib.h"
 #include "ctre/Phoenix.h"
 #include "LidarV3.h"
+#include <AHRS.h>
 
 class RobotMap {
 
@@ -32,6 +33,7 @@ public:
 	static std::shared_ptr<Ultrasonic> ultrasonicDistanceSensor;
 	static std::shared_ptr<AnalogInput> ultrasonicAnalogDistanceSensor;
 	static int UltrasonicAnalogPort;
+	static std::shared_ptr<AHRS> navGyro;
 
 	static void init();
 };

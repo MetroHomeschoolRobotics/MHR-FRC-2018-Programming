@@ -32,6 +32,7 @@ std::shared_ptr<Ultrasonic> RobotMap::ultrasonicDistanceSensor;
 std::shared_ptr<AnalogInput> RobotMap::ultrasonicAnalogDistanceSensor;
 int RobotMap::UltrasonicAnalogPort = 0;
 
+std::shared_ptr<AHRS> RobotMap::navGyro;
 
 void RobotMap::init() {
 
@@ -61,6 +62,7 @@ void RobotMap::init() {
     ultrasonicAnalogDistanceSensor.reset(new AnalogInput(UltrasonicAnalogPort));
 
     gyro.reset(new ADXRS450_Gyro());
+    navGyro.reset(new AHRS(SerialPort::kMXP));
 
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
     octoDriveSwitchSol1->Set(frc::DoubleSolenoid::kReverse);
