@@ -8,7 +8,7 @@
 #include "AutoRightRight.h"
 
 AutoRightRight::AutoRightRight() {
-	AddSequential(new AutoDriveDistance(70, -0.05, -0.4, 0));
-	AddSequential(new ArmPreset(5500));
+	AddSequential(new AutoDriveRotation(22000, 0,-0.5,0,FrontLeft));
+	AddSequential(new ArmPreset(8000));
 	AddSequential(new Drool());
 }

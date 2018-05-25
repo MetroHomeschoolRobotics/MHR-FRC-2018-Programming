@@ -43,7 +43,8 @@ double Positioning::GetArmRotation() {
 }
 
 double Positioning::GetFrontLeftDistance() {
-	return frontLeft.get()->GetSelectedSensorPosition(0);
+	// encoder runs in reverse
+	return -frontLeft.get()->GetSelectedSensorPosition(0);
 }
 
 double Positioning::GetFrontRightDistance() {
@@ -51,7 +52,8 @@ double Positioning::GetFrontRightDistance() {
 }
 
 double Positioning::GetRearLeftDistance() {
-	return rearLeft.get()->GetSelectedSensorPosition(0);
+	// encoder runs in reverse
+	return -rearLeft.get()->GetSelectedSensorPosition(0);
 }
 
 double Positioning::GetRearRightDistance() {

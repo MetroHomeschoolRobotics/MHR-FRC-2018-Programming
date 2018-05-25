@@ -14,8 +14,10 @@ void AutoCenter::Initialize() {
 void AutoCenter::Execute() {
 	int direction = Robot::autonomousSys.get()->FindDirection();
 	if (direction == 0) {
+		SmartDashboard::PutString("Auto Command", "Center to Left");
 		Scheduler::GetInstance()->AddCommand(new AutoCenterLeft());
 	} else if (direction == 1) {
+		SmartDashboard::PutString("Auto Command", "Center to Right");
 		Scheduler::GetInstance()->AddCommand(new AutoCenterRight());
 	}
 }

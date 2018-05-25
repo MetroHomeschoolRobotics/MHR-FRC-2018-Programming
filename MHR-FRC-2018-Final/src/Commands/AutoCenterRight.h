@@ -11,6 +11,7 @@
 #include "AutoDrive.h"
 #include "AutoDriveDistance.h"
 #include "ArmPreset.h"
+#include "AutoDriveRotation.h"
 #include "SwitchDrive.h"
 
 class AutoCenterRight : public frc::CommandGroup {

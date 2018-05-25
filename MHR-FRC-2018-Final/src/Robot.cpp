@@ -39,6 +39,7 @@ void Robot::RobotInit() {
 
     //Instantiate OI
 	oi.reset(new OI());
+	oi.get()->SetupDashboard();
 }
 
 
@@ -68,12 +69,14 @@ void Robot::AutonomousInit() {
 }
 
 void Robot::AutonomousPeriodic() {
-
+	UpdateDashboardStats();
 	frc::Scheduler::GetInstance()->Run();
 
 }
 
 void Robot::TeleopInit() {
+
+    frc::SmartDashboard::PutData("Autonomous Start", oi.get()->getAutoChooser());
 
 	//Initialize Drive and Lift and Disable Auto
 	if (autonomousCommand != nullptr)

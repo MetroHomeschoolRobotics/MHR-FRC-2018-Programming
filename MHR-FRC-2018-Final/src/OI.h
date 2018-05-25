@@ -38,6 +38,8 @@ public:
 
 	OI();
 
+	void SetupDashboard();
+
 	//Create Private Inputs
 	std::shared_ptr<frc::Joystick> getDriveJoystick();
 	std::shared_ptr<frc::Joystick> getManipulatorJoystick();

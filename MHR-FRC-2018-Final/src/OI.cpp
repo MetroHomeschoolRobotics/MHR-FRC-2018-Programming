@@ -66,14 +66,18 @@ OI::OI() {
     armPreset1->WhenPressed(new ArmPreset(17900));
 
     frc::JoystickButton *armPreset2 = new frc::JoystickButton(driveJoystick.get(), 8);
-    armPreset2->WhenPressed(new ArmPreset(6800));
+    armPreset2->WhenPressed(new ArmPreset(8000));
 
     frc::JoystickButton *manipArmPreset1 = new frc::JoystickButton(manipulatorJoystick.get(), 7);
     manipArmPreset1->WhenPressed(new ArmPreset(17900));
 
     frc::JoystickButton *manipArmPreset2 = new frc::JoystickButton(manipulatorJoystick.get(), 8);
-    manipArmPreset2->WhenPressed(new ArmPreset(6800));
+    manipArmPreset2->WhenPressed(new ArmPreset(8000));
 
+    autoChooser = new frc::SendableChooser<frc::Command*>();
+}
+
+void OI::SetupDashboard() {
     //SmartDashboard Buttons
     frc::SmartDashboard::PutData("Charge Pneumatics", new ChargePneumatics());
     frc::SmartDashboard::PutData("Switch Drive", new SwitchDrive());
@@ -81,7 +85,6 @@ OI::OI() {
     frc::SmartDashboard::PutData("Eat", new IntakeBox());
     frc::SmartDashboard::PutData("Puke", new ReleaseBox());
 
-    autoChooser = new frc::SendableChooser<frc::Command*>();
     autoChooser->AddObject("Start Left", new AutoLeft());
     autoChooser->AddDefault("Start Center", new AutoCenter());
     autoChooser->AddObject("Start Right", new AutoRight());

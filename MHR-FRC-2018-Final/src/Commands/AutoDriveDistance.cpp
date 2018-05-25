@@ -21,6 +21,7 @@ AutoDriveDistance::AutoDriveDistance(double distance, double driveX, double driv
 // Called just before this Command runs the first time
 void AutoDriveDistance::Initialize() {
 	startPos = Robot::positioning.get()->GetDistance();
+	SmartDashboard::PutNumber("Auto Drive Start", startPos);
 	Robot::octaDrive.get()->Move(x, y, z);
 }
 
