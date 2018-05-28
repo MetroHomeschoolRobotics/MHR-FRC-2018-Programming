@@ -7,3 +7,6 @@
 *.o
 *.settings
 *.prefs
+*.db
+*.sqllite
+*.ipch
