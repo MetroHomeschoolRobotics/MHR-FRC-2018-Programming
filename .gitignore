@@ -1,1 +1,9 @@
 /.metadata/
+
+.vs/*
+*.suo
+.project
+/Debug/*
+*.o
+*.settings
+*.prefs
