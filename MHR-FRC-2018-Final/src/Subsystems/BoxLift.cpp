@@ -3,7 +3,8 @@
 #include <cmath>
 
 BoxLift::BoxLift() : frc::Subsystem("BoxLift") {
-
+	liftEncoder = RobotMap::liftEncoder;
+	liftRotationCounter = RobotMap::liftRotationCounter;
 	liftMotor = RobotMap::liftMotor;
 	grabSol1 = RobotMap::liftGrabSol1;
 	pushSol1 = RobotMap::pusherSol1;
@@ -33,7 +34,9 @@ void BoxLift::SetOverride(bool active){
 }
 
 int BoxLift::GetArmHeight() {
-	return liftMotor.get()->GetSelectedSensorPosition(0);
+	//return liftMotor.get()->GetSelectedSensorPosition(0);
+	//return liftEncoder.get()->GetDistance();
+	return liftRotationCounter.get()->Get();
 }
 
 
@@ -51,7 +54,7 @@ void BoxLift::Rotate(double r){
 
 	//Divides Speed by Two
 	//r /= 2;
-	r = -r;
+	//r = -r;
 	//Override to be always on
 	if (inRangeOverride) {
 
@@ -111,6 +114,7 @@ void BoxLift::PukeBox(bool start){
 	if (start){
 		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
 		pushSol2.get()->Set(frc::DoubleSolenoid::Value::kForward);
+		Wait(0.05);
 
 		intakeLeft.get()->Set(-1);
 		intakeRight.get()->Set(1);

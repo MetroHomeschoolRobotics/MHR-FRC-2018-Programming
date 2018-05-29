@@ -2,7 +2,7 @@
 
 Lift::Lift(): frc::Command() {
 
-	Requires(Robot::boxLift.get());
+	//Requires(Robot::boxLift.get());
 
 }
 

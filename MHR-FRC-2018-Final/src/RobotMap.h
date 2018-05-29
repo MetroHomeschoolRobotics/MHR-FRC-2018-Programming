@@ -15,6 +15,8 @@ public:
 	static std::shared_ptr<WPI_TalonSRX> tankDriveRearRight;
 	static std::shared_ptr<WPI_TalonSRX> tankDriveRearLeft;
 
+	static std::shared_ptr<Encoder> liftEncoder;
+	static std::shared_ptr<Counter> liftRotationCounter;
 	static std::shared_ptr<WPI_TalonSRX> liftMotor;
 	static std::shared_ptr<Spark> corkscrewClampMotor;
 	static std::shared_ptr<Spark> leftBoxIntake;

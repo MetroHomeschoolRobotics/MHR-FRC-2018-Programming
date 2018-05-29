@@ -10,6 +10,8 @@ std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveFrontRight;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearRight;
 std::shared_ptr<WPI_TalonSRX> RobotMap::tankDriveRearLeft;
 
+std::shared_ptr<Encoder> RobotMap::liftEncoder;
+std::shared_ptr<Counter> RobotMap::liftRotationCounter;
 std::shared_ptr<WPI_TalonSRX> RobotMap::liftMotor;
 std::shared_ptr<Spark> RobotMap::corkscrewClampMotor;
 std::shared_ptr<Spark> RobotMap::leftBoxIntake;
@@ -50,6 +52,8 @@ void RobotMap::init() {
     SpeedController *rRight = tankDriveRearRight.get();
     mainDrive.reset(new MecanumDrive(*fLeft, *rLeft, *rRight, *fRight));
 
+    //liftEncoder.reset(new Encoder(5,4,false, Encoder::EncodingType::k4X));
+    liftRotationCounter.reset(new Counter(4));
     liftMotor.reset(new WPI_TalonSRX(4));
     leftBoxIntake.reset(new Spark(0));
     rightBoxIntake.reset(new Spark(1));

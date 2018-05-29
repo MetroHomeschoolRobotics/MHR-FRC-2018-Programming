@@ -3,7 +3,7 @@
 IntakeBox::IntakeBox() {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	Requires(Robot::boxLift.get());
+	//Requires(Robot::boxLift.get());
 }
 
 // Called just before this Command runs the first time

@@ -31,11 +31,11 @@ OI::OI() {
     manipSwitchDriveButton->ToggleWhenPressed(new SwitchDrive());
 
     //Grab Button
-    grabButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
-    grabButton->ToggleWhenPressed(new Grab());
+    //grabButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
+    //grabButton->ToggleWhenPressed(new Grab());
 
-    manipGrabButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
-    manipGrabButton->ToggleWhenPressed(new Grab());
+    //manipGrabButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
+    //manipGrabButton->ToggleWhenPressed(new Grab());
 
     //Override Button
     overrideButton.reset(new frc::JoystickButton(driveJoystick.get(), 5));
@@ -56,10 +56,10 @@ OI::OI() {
     manipPukeButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 2));
     manipPukeButton->WhenPressed(new ReleaseBox());
 
-    droolButton.reset(new frc::JoystickButton(driveJoystick.get(), 6));
+    droolButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
     droolButton->WhenPressed(new Drool());
 
-    manipDroolButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 6));
+    manipDroolButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
     manipDroolButton->WhenPressed(new Drool());
 
     frc::JoystickButton *armPreset1 = new frc::JoystickButton(driveJoystick.get(), 7);

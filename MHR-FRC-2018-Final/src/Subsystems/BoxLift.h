@@ -9,9 +9,10 @@ class BoxLift : public frc::Subsystem {
 
 private:
 
+	std::shared_ptr<Encoder> liftEncoder;
+	std::shared_ptr<Counter> liftRotationCounter;
 	std::shared_ptr<WPI_TalonSRX> liftMotor;
 	std::shared_ptr<frc::DoubleSolenoid> grabSol1;
-	std::shared_ptr<frc::Encoder> liftEncoder;
 	std::shared_ptr<Spark> corkscrewMotor;
 	std::shared_ptr<Spark> intakeLeft;
 	std::shared_ptr<Spark> intakeRight;

@@ -21,11 +21,6 @@ void Robot::RobotInit() {
 
 	pneumatics.reset(new PneumaticCharging());
 
-	//Initialize Commands
-	driveCommand = new Drive();
-	liftCommand = new Lift();
-	clampCommand = new Clamp();
-
 	//Initialize Subsystems
 	positioning.reset(new Positioning());
 
@@ -34,8 +29,13 @@ void Robot::RobotInit() {
     octaDrive.reset(new OctaDrive());
 
     boxLift.reset(new BoxLift());
-
     autonomousSys.reset(new AutonomousSystem());
+
+	//Initialize Commands
+	driveCommand = new Drive();
+	liftCommand = new Lift();
+	clampCommand = new Clamp();
+
 
     //Instantiate OI
 	oi.reset(new OI());
