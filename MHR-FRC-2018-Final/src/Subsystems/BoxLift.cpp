@@ -34,9 +34,9 @@ void BoxLift::SetOverride(bool active){
 }
 
 int BoxLift::GetArmHeight() {
-	//return liftMotor.get()->GetSelectedSensorPosition(0);
+	return liftMotor.get()->GetSelectedSensorPosition(0);
 	//return liftEncoder.get()->GetDistance();
-	return liftRotationCounter.get()->Get();
+	//return liftRotationCounter.get()->Get();
 }
 
 
