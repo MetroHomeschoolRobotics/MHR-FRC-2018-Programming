@@ -52,8 +52,10 @@ void RobotMap::init() {
     SpeedController *rRight = tankDriveRearRight.get();
     mainDrive.reset(new MecanumDrive(*fLeft, *rLeft, *rRight, *fRight));
 
-    //liftEncoder.reset(new Encoder(5,4,false, Encoder::EncodingType::k4X));
-    liftRotationCounter.reset(new Counter(4));
+    //liftEncoder.reset(new Encoder(4,5,false, Encoder::EncodingType::k4X));
+    //double dist =0.5*3.14/1024;  // ft per pulse
+    //liftEncoder.get()->SetDistancePerPulse(dist);
+    //liftRotationCounter.reset(new Counter(4));
     liftMotor.reset(new WPI_TalonSRX(4));
     leftBoxIntake.reset(new Spark(0));
     rightBoxIntake.reset(new Spark(1));
@@ -65,7 +67,7 @@ void RobotMap::init() {
     // For Ultrasonic: Maxbotix LV-MaxSonar-EZ1
     ultrasonicAnalogDistanceSensor.reset(new AnalogInput(UltrasonicAnalogPort));
 
-    gyro.reset(new ADXRS450_Gyro());
+    //gyro.reset(new ADXRS450_Gyro());
     navGyro.reset(new AHRS(SerialPort::kMXP));
 
     octoDriveSwitchSol1.reset(new frc::DoubleSolenoid(0, 0, 1));
