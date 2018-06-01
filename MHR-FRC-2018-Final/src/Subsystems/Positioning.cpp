@@ -39,7 +39,9 @@ double Positioning::GetAngle() {
 }
 
 double Positioning::GetArmRotation() {
-	return RobotMap::liftMotor.get()->GetSelectedSensorPosition(0);
+	return RobotMap::liftRotationCounter.get()->Get();
+	//return RobotMap::liftEncoder.get()->GetDistance();
+	//return RobotMap::liftMotor.get()->GetSelectedSensorPosition(0);
 }
 
 double Positioning::GetFrontLeftDistance() {

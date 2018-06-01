@@ -112,9 +112,12 @@ void BoxLift::EatBox(bool start){
 
 void BoxLift::PukeBox(bool start){
 	if (start){
+		intakeLeft.get()->Set(.5);
+		intakeRight.get()->Set(-.5);
+
 		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
 		pushSol2.get()->Set(frc::DoubleSolenoid::Value::kForward);
-		Wait(0.05);
+		Wait(0.1);
 
 		intakeLeft.get()->Set(-1);
 		intakeRight.get()->Set(1);
