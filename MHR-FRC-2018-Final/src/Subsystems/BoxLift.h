@@ -22,7 +22,7 @@ private:
 	double threshold = 0.1;
 	bool isHold = false;
 	bool inRangeOverride = false;
-	double minLift = 23500;
+	double minLift = 21500;
 	double maxLift = 0;
 public:
 

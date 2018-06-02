@@ -28,7 +28,7 @@ void BoxLift::SetOverride(bool active){
 
 		inRangeOverride = false;
 		liftMotor.get()->SetSelectedSensorPosition(0,0,5);
-		RobotMap::gyro.get()->Reset();
+		//RobotMap::gyro.get()->Reset();
 	}
 
 }
@@ -54,7 +54,7 @@ void BoxLift::Rotate(double r){
 
 	//Divides Speed by Two
 	//r /= 2;
-	//r = -r;
+	r = -r;
 	//Override to be always on
 	if (inRangeOverride) {
 
@@ -137,8 +137,8 @@ void BoxLift::PukeBox(bool start){
 }
 
 void BoxLift::DroolBox(){
-	intakeLeft.get()->Set(-.6);
-	intakeRight.get()->Set(.6);
+	intakeLeft.get()->Set(-.4); //.6 original speed
+	intakeRight.get()->Set(.4);
 
 	Wait(.6);
 

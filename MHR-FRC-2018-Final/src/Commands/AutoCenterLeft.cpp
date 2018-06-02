@@ -8,10 +8,11 @@
 #include "AutoCenterLeft.h"
 
 AutoCenterLeft::AutoCenterLeft() {
-	AddSequential(new AutoDriveRotation(8500, -0.8,-0.5,0,FrontRight));
-	AddSequential(new AutoDriveRotation(23000, 0,-0.5,0,FrontRight));
-	AddSequential(new AutoDriveRotation(3000, 0.7,-0.5,0,FrontRight));
-	AddSequential(new AutoDriveRotation(2000, 0,-0.5,0,FrontRight));
+	AddSequential(new AutoDriveRotation(5000, 0,-0.4,0,FrontRight));
+	AddSequential(new AutoDriveRotation(12000, -0.7,-0.3,0,FrontRight));
+	AddSequential(new AutoDriveRotation(16500, 0.3,-0.5,0,FrontRight));
+	AddSequential(new AutoDriveRotation(2000, 0.3,-0.3,0,FrontLeft));
+	AddSequential(new AutoDriveRotation(2000, 0,-0.3,0,FrontRight));
 	AddSequential(new ArmPreset(8000));
 	AddSequential(new Drool());
 }

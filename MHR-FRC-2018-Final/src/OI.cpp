@@ -50,16 +50,16 @@ OI::OI() {
     manipEatButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 3));
     manipEatButton->WhenPressed(new IntakeBox());
 
-    drivePukeButton.reset(new frc::JoystickButton(driveJoystick.get(), 2));
+    drivePukeButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
     drivePukeButton->WhenPressed(new ReleaseBox());
 
-    manipPukeButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 2));
+    manipPukeButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
     manipPukeButton->WhenPressed(new ReleaseBox());
 
-    droolButton.reset(new frc::JoystickButton(driveJoystick.get(), 4));
+    droolButton.reset(new frc::JoystickButton(driveJoystick.get(), 2));
     droolButton->WhenPressed(new Drool());
 
-    manipDroolButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 4));
+    manipDroolButton.reset(new frc::JoystickButton(manipulatorJoystick.get(), 2));
     manipDroolButton->WhenPressed(new Drool());
 
     frc::JoystickButton *armPreset1 = new frc::JoystickButton(driveJoystick.get(), 7);
