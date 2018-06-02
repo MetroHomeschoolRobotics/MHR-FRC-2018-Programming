@@ -8,12 +8,12 @@
 #include "AutoLeftLeft.h"
 
 AutoLeftLeft::AutoLeftLeft() {
-	AddSequential(new AutoDriveRotation(2000, 0,-0.4,0,FrontLeft));
-	AddSequential(new AutoDriveRotation(38000, 0,-0.6,0,FrontLeft));
+	AddSequential(new AutoDriveRotation(2000, 0,-0.3,0,FrontLeft));
+	AddSequential(new AutoDriveRotation(41000, 0,-0.5,0,FrontLeft));
 	AddSequential(new SwitchDrive());
-	AddSequential(new AutoDriveTurn(-62, 0, 0, -.4));
+	AddSequential(new AutoDriveTurn(-60, 0, 0, -.4));
 	AddSequential(new SwitchDrive());
-	AddSequential(new AutoDriveRotation(9500, 0,-0.4,0,FrontLeft));
+	AddSequential(new AutoDriveRotation(9000, 0,-0.4,0,FrontLeft), 1);
 	AddSequential(new ArmPreset(8000));
 	AddSequential(new Drool());
 }

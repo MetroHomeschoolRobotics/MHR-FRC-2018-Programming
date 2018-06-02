@@ -13,7 +13,7 @@ AutoRightRight::AutoRightRight() {
 	AddSequential(new SwitchDrive());
 	AddSequential(new AutoDriveTurn(58, 0, 0, .4));
 	AddSequential(new SwitchDrive());
-	AddSequential(new AutoDriveRotation(6000, 0,-0.4,0,FrontLeft));
+	AddSequential(new AutoDriveRotation(6500, 0,-0.4,0,FrontLeft), .7);
 	AddSequential(new ArmPreset(8000));
 	AddSequential(new Drool());
 }

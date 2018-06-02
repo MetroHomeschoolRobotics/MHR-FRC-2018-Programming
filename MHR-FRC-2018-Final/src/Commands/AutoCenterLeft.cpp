@@ -12,8 +12,8 @@ AutoCenterLeft::AutoCenterLeft() {
 	AddSequential(new AutoDriveRotation(12500, -0.5,-0.4,0,FrontRight));
 
 	AddSequential(new AutoDriveRotation(12500, 0,-0.3,0,FrontRight));
-	AddSequential(new AutoDriveRotation(6500, 0.5,-0.4,0,FrontRight));
-	AddSequential(new AutoDriveRotation(2000, 0,-0.3,0,FrontLeft));
+	AddSequential(new AutoDriveRotation(5500, 0.5,-0.4,0,FrontRight));
+	AddSequential(new AutoDriveRotation(4500, 0,-0.3,0,FrontLeft));
 
 	AddSequential(new ArmPreset(8000));
 	AddSequential(new Drool());

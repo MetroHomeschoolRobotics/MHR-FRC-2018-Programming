@@ -9,7 +9,7 @@
 
 ArmPreset::ArmPreset(int target) {
 	_boxLift = Robot::boxLift.get();
-	Requires(_boxLift);
+	//Requires(_boxLift);
 	_target = target;
 }
 
