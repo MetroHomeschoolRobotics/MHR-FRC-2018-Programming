@@ -31,9 +31,9 @@ void AutoDriveTurn::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool AutoDriveTurn::IsFinished() {
 	if (targetPos > 0) {
-		return Robot::positioning.get()->GetAngle() > targetPos;
+		return Robot::positioning.get()->GetAngle() < startPos - targetPos;
 	} else {
-		return Robot::positioning.get()->GetAngle() > startPos + targetPos;
+		return Robot::positioning.get()->GetAngle() > startPos - targetPos;
 	}
 }
 

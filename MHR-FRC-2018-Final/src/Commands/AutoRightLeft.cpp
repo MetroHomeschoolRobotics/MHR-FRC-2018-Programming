@@ -8,6 +8,12 @@
 #include "AutoRightLeft.h"
 
 AutoRightLeft::AutoRightLeft() {
+	// Cross the line
+	AddSequential(new AutoDriveRotation(2000, 0,-0.4,0,FrontLeft));
+	AddSequential(new AutoDriveRotation(25000, 0,-0.6,0,FrontLeft));
+
+	/*
+	// Shoot the moon
 	AddSequential(new AutoDriveDistance(100, 0, -0.65, 0));
 	AddSequential(new AutoDriveTurn(85, 0, 0, .5));
 	AddSequential(new SwitchDrive());
@@ -20,4 +26,5 @@ AutoRightLeft::AutoRightLeft() {
 	AddSequential(new AutoDrive(0, -0.5, 0), 0.5);
 	AddSequential(new ArmPreset(5500));
 	AddSequential(new Drool());
+	*/
 }
