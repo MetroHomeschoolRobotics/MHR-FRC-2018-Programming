@@ -11,9 +11,9 @@ AutoLeftLeft::AutoLeftLeft() {
 	AddSequential(new AutoDriveRotation(2000, 0,-0.4,0,FrontLeft));
 	AddSequential(new AutoDriveRotation(38000, 0,-0.6,0,FrontLeft));
 	AddSequential(new SwitchDrive());
-	AddSequential(new AutoDriveTurn(-58, 0, 0, -.4));
+	AddSequential(new AutoDriveTurn(-62, 0, 0, -.4));
 	AddSequential(new SwitchDrive());
-	AddSequential(new AutoDriveRotation(6500, 0,-0.4,0,FrontLeft));
+	AddSequential(new AutoDriveRotation(9500, 0,-0.4,0,FrontLeft));
 	AddSequential(new ArmPreset(8000));
 	AddSequential(new Drool());
 }
