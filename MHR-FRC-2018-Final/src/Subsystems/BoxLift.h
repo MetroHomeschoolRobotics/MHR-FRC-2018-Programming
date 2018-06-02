@@ -39,6 +39,8 @@ public:
 
     void Eject();
 
+    void Pusher(bool in);
+
     void Clamp(bool in);
     void Clamp(double speed);
     void ClampReset();

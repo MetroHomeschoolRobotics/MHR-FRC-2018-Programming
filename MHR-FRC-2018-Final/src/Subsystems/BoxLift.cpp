@@ -136,6 +136,16 @@ void BoxLift::PukeBox(bool start){
 	}
 }
 
+void BoxLift::Pusher(bool in){
+	if (in){
+		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kReverse);
+		pushSol2.get()->Set(frc::DoubleSolenoid::Value::kReverse);
+	} else {
+		pushSol1.get()->Set(frc::DoubleSolenoid::Value::kForward);
+		pushSol2.get()->Set(frc::DoubleSolenoid::Value::kForward);
+	}
+}
+
 void BoxLift::DroolBox(){
 	intakeLeft.get()->Set(-.4); //.6 original speed
 	intakeRight.get()->Set(.4);

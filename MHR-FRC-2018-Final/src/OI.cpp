@@ -16,6 +16,7 @@
 #include "Commands/ChargePneumatics.h"
 #include "Commands/Drool.h"
 #include "Commands/ArmPreset.h"
+#include "Commands/PushPusher.h"
 
 OI::OI() {
 
@@ -84,6 +85,8 @@ void OI::SetupDashboard() {
     frc::SmartDashboard::PutData("Drool", new Drool());
     frc::SmartDashboard::PutData("Eat", new IntakeBox());
     frc::SmartDashboard::PutData("Puke", new ReleaseBox());
+    frc::SmartDashboard::PutData("Pusher In", new PushPusher(true));
+    frc::SmartDashboard::PutData("Pusher Out", new PushPusher(false));
 
     autoChooser->AddObject("Start Left", new AutoLeft());
     autoChooser->AddDefault("Start Center", new AutoCenter());
