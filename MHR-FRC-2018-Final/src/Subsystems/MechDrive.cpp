@@ -24,11 +24,6 @@ void MechDrive::Periodic() {
 }
 
 void MechDrive::Move(double x, double y, double z){
-	double distance = positioning.get()->GetDistance();
-	// Output sensor data
-	//std::printf("Lidar Distance %4.2f \n", distance);
-	//std::printf("Gyro Angle %4.2f \n", positioning.get()->GetAngle());
-
 	if(fabs(x) < threshold) {
 		x = 0;
 	}

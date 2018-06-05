@@ -15,11 +15,11 @@ std::shared_ptr<PneumaticCharging> Robot::pneumatics;
 void Robot::RobotInit() {
 	RobotMap::init();
 
-	/*
+
 	cs::UsbCamera cam0 = CameraServer::GetInstance()->StartAutomaticCapture();
 	cam0.SetFPS(30);
 	cam0.SetResolution(640,480);
-    */
+
 	pneumatics.reset(new PneumaticCharging());
 
 	//Initialize Subsystems
